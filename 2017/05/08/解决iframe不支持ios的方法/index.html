@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Arkiv | Hexo</title>
+  <title>解决iframe不支持ios的方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://ywyhero.github.io/archives/index.html">
+  <meta name="description" content="html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;ifram&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;  &amp;lt;/div&amp;gt; css样式  #ifram {    border: 0;    width: 1px;    min-width: 100%;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决iframe不支持ios的方法">
+<meta property="og:url" content="http://ywyhero.github.io/2017/05/08/解决iframe不支持ios的方法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;ifram&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;  &amp;lt;/div&amp;gt; css样式  #ifram {    border: 0;    width: 1px;    min-width: 100%;">
+<meta property="og:updated_time" content="2017-05-08T09:50:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="解决iframe不支持ios的方法">
+<meta name="twitter:description" content="html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;ifram&amp;quot; width=&amp;quot;100%&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;  &amp;lt;/div&amp;gt; css样式  #ifram {    border: 0;    width: 1px;    min-width: 100%;">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,96 +63,63 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/19/nodejs学习之图片上传/" class="archive-article-date">
-  <time datetime="2017-05-19T10:01:46.000Z" itemprop="datePublished">May 19</time>
+        <section id="main"><article id="post-解决iframe不支持ios的方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/解决iframe不支持ios的方法/" class="article-date">
+  <time datetime="2017-05-08T09:34:05.000Z" itemprop="datePublished">2017-05-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/19/nodejs学习之图片上传/">nodejs学习之图片上传</a>
+    <h1 class="article-title" itemprop="name">
+      解决iframe不支持ios的方法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/12/微信开发缩略图不显示的问题解决方法/" class="archive-article-date">
-  <time datetime="2017-05-12T01:37:03.000Z" itemprop="datePublished">May 12</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/12/微信开发缩略图不显示的问题解决方法/">微信开发缩略图不显示的问题解决方法</a>
-    </h1>
-  
+        <h2 id="html布局"><a href="#html布局" class="headerlink" title="html布局"></a>html布局</h2><p>  <code>&lt;div id=&quot;iframe-box&quot;&gt;</code><br>  <code>&lt;iframe id=&quot;ifram&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;</code><br>  <code>&lt;/div&gt;</code></p>
+<h2 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h2><p>  #ifram {<br>    border: 0;<br>    width: 1px;<br>    min-width: 100%;<br>    *width: 100%;<br>  }</p>
+<h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><p>　　<br>  let ifram = document.getElementById(‘ifram’);<br>  if (navigator.userAgent.match(/iPad|iPhone/i)) {<br>    let iframe_box = document.getElementById(‘iframe-box’);<br>    iframe_box.style.width = 100 + ‘%’;<br>    iframe_box.style.overflowX = ‘hidden’;<br>    iframe_box.style.overflowY = ‘scroll’;<br>    iframe_box.style.webkitOverflowScrolling = ‘touch’;<br>    ifram.setAttribute(‘scrolling’, ‘no’);<br>    iframe_box.appendChild(ifram)<br>  }</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/解决iframe不支持ios的方法/" class="archive-article-date">
-  <time datetime="2017-05-08T09:34:05.000Z" itemprop="datePublished">May 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/解决iframe不支持ios的方法/">解决iframe不支持ios的方法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/hexo换肤/" class="archive-article-date">
-  <time datetime="2017-05-08T07:17:34.000Z" itemprop="datePublished">May 8</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ywyhero.github.io/2017/05/08/解决iframe不支持ios的方法/" data-id="cj2vpcwn400010wx890a6psjs" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/hexo换肤/">hexo换肤</a>
-    </h1>
-  
-
-    </header>
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/12/微信开发缩略图不显示的问题解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信开发缩略图不显示的问题解决方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/08/hexo换肤/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo换肤</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
