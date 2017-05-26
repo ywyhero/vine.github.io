@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="#ios button按钮有默认样式的解决办法 input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quo">
+<meta name="description" content="ios button按钮有默认样式的解决办法input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端开发ios与安卓的问题（持续更新）">
-<meta property="og:url" content="http://ywyhero.github.io/2017/05/26/解决iframe不支持ios的方法/index.html">
+<meta property="og:url" content="http://ywyhero.github.io/2017/05/26/移动端开发ios与安卓的问题（持续更新）/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="#ios button按钮有默认样式的解决办法 input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quo">
-<meta property="og:updated_time" content="2017-05-26T02:25:15.000Z">
+<meta property="og:description" content="ios button按钮有默认样式的解决办法input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;">
+<meta property="og:updated_time" content="2017-05-26T02:34:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端开发ios与安卓的问题（持续更新）">
-<meta name="twitter:description" content="#ios button按钮有默认样式的解决办法 input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quo">
+<meta name="twitter:description" content="ios button按钮有默认样式的解决办法input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;} ios不兼容iframe的解决方法html布局  &amp;lt;div id=&amp;quot;iframe-box&amp;quot;&amp;gt;  &amp;lt;iframe id=&amp;quot;">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://ywyhero.github.io/2017/05/26/解决iframe不支持ios的方法/"/>
+  <link rel="canonical" href="http://ywyhero.github.io/2017/05/26/移动端开发ios与安卓的问题（持续更新）/"/>
 
 
 
@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/解决iframe不支持ios的方法/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/移动端开发ios与安卓的问题（持续更新）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -317,8 +317,7 @@
       
 
       
-        <p>#ios button按钮有默认样式的解决办法</p>
-<p>input[type=”button”], input[type=”submit”], input[type=”reset”] {<br>  -webkit-appearance: none;<br>}</p>
+        <h1 id="ios-button按钮有默认样式的解决办法"><a href="#ios-button按钮有默认样式的解决办法" class="headerlink" title="ios button按钮有默认样式的解决办法"></a>ios button按钮有默认样式的解决办法</h1><p>input[type=”button”], input[type=”submit”], input[type=”reset”] {<br>  -webkit-appearance: none;<br>}</p>
 <h1 id="ios不兼容iframe的解决方法"><a href="#ios不兼容iframe的解决方法" class="headerlink" title="ios不兼容iframe的解决方法"></a>ios不兼容iframe的解决方法</h1><h2 id="html布局"><a href="#html布局" class="headerlink" title="html布局"></a>html布局</h2><p>  <code>&lt;div id=&quot;iframe-box&quot;&gt;</code><br>  <code>&lt;iframe id=&quot;ifram&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;</code><br>  <code>&lt;/div&gt;</code></p>
 <h2 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h2><p>  #ifram {<br>    border: 0;<br>    width: 1px;<br>    min-width: 100%;<br>    *width: 100%;<br>  }</p>
 <h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><p>　　<br>  let ifram = document.getElementById(‘ifram’);<br>  if (navigator.userAgent.match(/iPad|iPhone/i)) {<br>    let iframe_box = document.getElementById(‘iframe-box’);<br>    iframe_box.style.width = 100 + ‘%’;<br>    iframe_box.style.overflowX = ‘hidden’;<br>    iframe_box.style.overflowY = ‘scroll’;<br>    iframe_box.style.webkitOverflowScrolling = ‘touch’;<br>    ifram.setAttribute(‘scrolling’, ‘no’);<br>    iframe_box.appendChild(ifram)<br>  }</p>
@@ -490,7 +489,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ios不兼容iframe的解决方法"><span class="nav-number">1.</span> <span class="nav-text">ios不兼容iframe的解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html布局"><span class="nav-number">1.1.</span> <span class="nav-text">html布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css样式"><span class="nav-number">1.2.</span> <span class="nav-text">css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js逻辑"><span class="nav-number">1.3.</span> <span class="nav-text">js逻辑</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ios-button按钮有默认样式的解决办法"><span class="nav-number">1.</span> <span class="nav-text">ios button按钮有默认样式的解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ios不兼容iframe的解决方法"><span class="nav-number">2.</span> <span class="nav-text">ios不兼容iframe的解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html布局"><span class="nav-number">2.1.</span> <span class="nav-text">html布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css样式"><span class="nav-number">2.2.</span> <span class="nav-text">css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js逻辑"><span class="nav-number">2.3.</span> <span class="nav-text">js逻辑</span></a></li></ol></li></ol></div>
             
 
           </div>

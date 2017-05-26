@@ -374,7 +374,7 @@
   
 
   <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/解决iframe不支持ios的方法/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/移动端开发ios与安卓的问题（持续更新）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -393,7 +393,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/26/解决iframe不支持ios的方法/" itemprop="url">移动端开发ios与安卓的问题（持续更新）</a></h1>
+                <a class="post-title-link" href="/2017/05/26/移动端开发ios与安卓的问题（持续更新）/" itemprop="url">移动端开发ios与安卓的问题（持续更新）</a></h1>
         
 
         <div class="post-meta">
@@ -442,8 +442,7 @@
       
         
           
-            <p>#ios button按钮有默认样式的解决办法</p>
-<p>input[type=”button”], input[type=”submit”], input[type=”reset”] {<br>  -webkit-appearance: none;<br>}</p>
+            <h1 id="ios-button按钮有默认样式的解决办法"><a href="#ios-button按钮有默认样式的解决办法" class="headerlink" title="ios button按钮有默认样式的解决办法"></a>ios button按钮有默认样式的解决办法</h1><p>input[type=”button”], input[type=”submit”], input[type=”reset”] {<br>  -webkit-appearance: none;<br>}</p>
 <h1 id="ios不兼容iframe的解决方法"><a href="#ios不兼容iframe的解决方法" class="headerlink" title="ios不兼容iframe的解决方法"></a>ios不兼容iframe的解决方法</h1><h2 id="html布局"><a href="#html布局" class="headerlink" title="html布局"></a>html布局</h2><p>  <code>&lt;div id=&quot;iframe-box&quot;&gt;</code><br>  <code>&lt;iframe id=&quot;ifram&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;</code><br>  <code>&lt;/div&gt;</code></p>
 <h2 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h2><p>  #ifram {<br>    border: 0;<br>    width: 1px;<br>    min-width: 100%;<br>    *width: 100%;<br>  }</p>
 <h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><p>　　<br>  let ifram = document.getElementById(‘ifram’);<br>  if (navigator.userAgent.match(/iPad|iPhone/i)) {<br>    let iframe_box = document.getElementById(‘iframe-box’);<br>    iframe_box.style.width = 100 + ‘%’;<br>    iframe_box.style.overflowX = ‘hidden’;<br>    iframe_box.style.overflowY = ‘scroll’;<br>    iframe_box.style.webkitOverflowScrolling = ‘touch’;<br>    ifram.setAttribute(‘scrolling’, ‘no’);<br>    iframe_box.appendChild(ifram)<br>  }</p>
