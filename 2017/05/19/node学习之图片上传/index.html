@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);functon start () {    function onRequest (request, response">
+<meta name="description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);function start () {    function onRequest (request, respons">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node学习之图片上传">
 <meta property="og:url" content="http://ywyhero.github.io/2017/05/19/node学习之图片上传/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);functon start () {    function onRequest (request, response">
-<meta property="og:updated_time" content="2017-05-19T10:55:30.000Z">
+<meta property="og:description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);function start () {    function onRequest (request, respons">
+<meta property="og:updated_time" content="2017-05-22T06:55:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node学习之图片上传">
-<meta name="twitter:description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);functon start () {    function onRequest (request, response">
+<meta name="twitter:description" content="安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。 先创建一个服务 (server.js)let http = require(‘http’);function start () {    function onRequest (request, respons">
 
 
 
@@ -318,14 +318,14 @@
 
       
         <h1 id="安装node环境"><a href="#安装node环境" class="headerlink" title="安装node环境"></a>安装node环境</h1><p><code>brew install node</code><br>也可去node官网（中文网：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a> 英文网：<a href="https://nodejs.org/en/）下载安装包自行安装。" target="_blank" rel="external">https://nodejs.org/en/）下载安装包自行安装。</a></p>
-<h1 id="先创建一个服务-server-js"><a href="#先创建一个服务-server-js" class="headerlink" title="先创建一个服务 (server.js)"></a>先创建一个服务 (server.js)</h1><p>let http = require(‘http’);<br>functon start () {<br>    function onRequest (request, response) {<br>        response.writeHead(200, {‘Content-Type’: ‘text/plain’});<br>        response.write(‘Hello World’);<br>        response.end();<br>    }<br>    http.creatServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>start() //执行程序</p>
+<h1 id="先创建一个服务-server-js"><a href="#先创建一个服务-server-js" class="headerlink" title="先创建一个服务 (server.js)"></a>先创建一个服务 (server.js)</h1><p>let http = require(‘http’);<br>function start () {<br>    function onRequest (request, response) {<br>        response.writeHead(200, {‘Content-Type’: ‘text/plain’});<br>        response.write(‘Hello World’);<br>        response.end();<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>start() //执行程序</p>
 <p><code>注:直接打开终端，跳转到当前文件夹输入node server终端应显示”服务已开启“。浏览器打开 http://localhost:8888 应显示“Hello World”。</code></p>
 <h1 id="为更好的开发，代码更加简洁，使用模块化开发"><a href="#为更好的开发，代码更加简洁，使用模块化开发" class="headerlink" title="为更好的开发，代码更加简洁，使用模块化开发"></a>为更好的开发，代码更加简洁，使用模块化开发</h1><ul>
-<li><p>修改server.js代码<br>let http = require(‘http’);<br>functon start () {<br>  function onRequest (request, response) {</p>
+<li><p>修改server.js代码<br>let http = require(‘http’);<br>function start () {<br>  function onRequest (request, response) {</p>
 <pre><code>response.writeHead(200, {&apos;Content-Type&apos;: &apos;text/plain&apos;});
 response.write(&apos;Hello World&apos;);
 response.end();
-</code></pre><p>  }<br>  http.creatServer(onRequest).listen(8888);<br>  console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
+</code></pre><p>  }<br>  http.createServer(onRequest).listen(8888);<br>  console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
 </li>
 <li><p>添加index.js</p>
 </li>
@@ -340,7 +340,7 @@ response.end();
 <ul>
 <li>server.js里面代码修改后如下：</li>
 </ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(pathname);<br>    }<br>    http.creatServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
+<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(pathname);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
 <ul>
 <li>index.js里面代码修改后如下：</li>
 </ul>
@@ -353,12 +353,12 @@ response.end();
 <ul>
 <li>route.js里面代码修改后如下：</li>
 </ul>
-<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        handle<a href="response, request">pathname</a><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
+<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, request)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
 <p>exports.route = route;</p>
 <ul>
 <li>server.js里面代码修改后如下：</li>
 </ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.creatServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
+<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
 <ul>
 <li>index.js里面代码修改后如下：</li>
 </ul>
@@ -370,7 +370,7 @@ response.end();
 <h1 id="修改代码使点击按钮后获取输入到input里面的内容"><a href="#修改代码使点击按钮后获取输入到input里面的内容" class="headerlink" title="修改代码使点击按钮后获取输入到input里面的内容"></a>修改代码使点击按钮后获取输入到input里面的内容</h1><ul>
 <li>server.js里面代码修改后如下：</li>
 </ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let postData = ‘’<br>        let pathname = url.parse(request.url).pathname;<br>        request.setEncoding(‘utf8’);<br>        request.addListener(‘data’,function(chunk){<br>            postData += chunk;<br>            console.log(‘获取到的数据为’ ＋ postData)<br>        })<br>        request.addListener(‘end’, function(){<br>            route(handle, pathname, response, postData);<br>        })<br>    }<br>    http.creatServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
+<p>let http = require(‘http’);<br>let url = require(‘url’);<br>function start (route, handle) {<br>    function onRequest (request, response) {<br>        let postData = ‘’<br>        let pathname = url.parse(request.url).pathname;<br>        request.setEncoding(‘utf8’);<br>        request.addListener(‘data’,function(chunk){<br>            postData += chunk;<br>            console.log(‘获取到的数据为’ ＋ postData)<br>        })<br>        request.addListener(‘end’, function(){<br>            route(handle, pathname, response, postData);<br>        })<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
 <ul>
 <li>requestHandlers.js里面代码修改后如下：</li>
 </ul>
@@ -381,7 +381,7 @@ response.end();
 <ul>
 <li>route.js里面代码修改后如下：</li>
 </ul>
-<p>function route(handle, pathname, response, postData) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        handle<a href="response, postData">pathname</a><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
+<p>function route(handle, pathname, response, postData) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, postData)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
 <p>exports.route = route;</p>
 <p><code>注：在终端输入node index后，终端显示为“服务已开启”，打开http://losthost:8888 页面为一个input和一个按钮，在input输入内容（“不能输入中文，否则乱码，是Buffer的问题。“）终端显示为“获取到的数据为。。。”并且页面跳转到http://losthost:8888／upload 并显示你输入的内容。</code></p>
 <h1 id="大概的逻辑已走通，下面我们开始上传图片，并显示图片"><a href="#大概的逻辑已走通，下面我们开始上传图片，并显示图片" class="headerlink" title="大概的逻辑已走通，下面我们开始上传图片，并显示图片"></a>大概的逻辑已走通，下面我们开始上传图片，并显示图片</h1><ul>
@@ -395,12 +395,12 @@ response.end();
 <ul>
 <li>route.js里面代码修改后如下：</li>
 </ul>
-<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        handle<a href="response, request">pathname</a><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
+<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, request)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
 <p>exports.route = route;</p>
 <ul>
 <li>server.js里面代码修改后如下：</li>
 </ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.creatServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}</p>
+<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}</p>
 <p>exports.start = start;</p>
 <ul>
 <li>index.js里面代码修改后如下：</li>
@@ -530,7 +530,7 @@ response.end();
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -543,7 +543,7 @@ response.end();
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
