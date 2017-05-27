@@ -254,6 +254,178 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/27/前端加密解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vine Yao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495200254229&di=fe7f600d4de8da478765839ee7d4fe9e&imgtype=0&src=http%3A%2F%2Fpic1.shejiben.com%2Fi%2Fupload%2F2013%2F03%2F19%2F20130319010757-14a40642-me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vine的个人微博">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/27/前端加密解决办法/" itemprop="url">前端加密解决办法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T14:43:57+08:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="密码AES加密"><a href="#密码AES加密" class="headerlink" title="密码AES加密"></a>密码AES加密</h1><p>1、npm install crypto-js –save-dev<br>2、代码编写<br>import CryptoJs from ‘crypto-js’<br><code>前端和ios的padding是Pkcs7，java的padding是Pkcs5</code><br>let key = CryptoJs.enc.Utf8.parse(“:<em>mU@-\”S61Eujx$c”);<br>let iv  = CryptoJs.enc.Utf8.parse(‘:</em>mU@-\”S61Eujx$c’);<br>let aes = {<br>    <code>加密</code><br>    aesEncrypt(plaintext) {<br>        return CryptoJs.AES.encrypt(plaintext, key, {mode: CryptoJs.mode[‘ECB’], padding: CryptoJs.pad[‘Pkcs7’], iv: iv}).toString();<br>    }<br>    <code>解密</code><br>    aesDecrypt(ciphertext) {<br>        let plainBytes = CryptoJs.AES.decrypt(ciphertext, key, {mode: CryptoJs.mode[‘ECB’], padding: CryptoJs.pad[‘Pkcs7’], iv: iv});<br>        return CryptoJs.enc.Utf8.stringify(plainBytes).toString();<br>    }<br>}<br>module.exports = aes;</p>
+<h1 id="整体加密"><a href="#整体加密" class="headerlink" title="整体加密"></a>整体加密</h1><h2 id="设置linkid（自行设置随机数）"><a href="#设置linkid（自行设置随机数）" class="headerlink" title="设置linkid（自行设置随机数）"></a>设置linkid（自行设置随机数）</h2><p>1、npm install uuid<br>2、代码编写<br><code>uuid.js</code><br>const uuidv4 = require(‘uuid’)<br>function getUuid () {<br>  let auuid = uuidv4()<br>  auuid = auuid.replace(/-/g, ‘’)<br>  return auuid<br>}<br>module.exports = {getUuid: getUuid}</p>
+<p><code>linkid.js</code><br>import uuid from ‘./uuid.js’<br>let linkid = uuid.getUuid()</p>
+<p>module.exports = linkid;</p>
+<h2 id="key值编码"><a href="#key值编码" class="headerlink" title="key值编码"></a>key值编码</h2><p>1、需要下载的代码库<br>npm install crypto-js –save-dev<br>npm install utf8-bytes</p>
+<p>2、代码编写<br><code>crypto.js</code><br>let CryptoJs = require(‘crypto-js’),<br>    bytes = require(‘utf8-bytes’);</p>
+<p>class crypto {<br>  constructor(key, iv = key, mode = ‘ECB’, padding = ‘ZeroPadding’) {<br>    this.key = key; //传入的key值<br>    this.iv = iv;<br>    this.mode = mode;<br>    this.padding = padding;<br>    this.skey = CryptoJs.enc.Utf8.parse(key);<br>    this.siv = CryptoJs.enc.Utf8.parse(iv);<br>  }</p>
+<p>  encrypt(plaintext) {<br>    let length = (16 - bytes(plaintext).length % 16) % 16;<br>    for (let i = 0; i &lt; length; i++) {<br>      plaintext += ‘ ‘;c<br>    }<br>    plaintext = CryptoJs.enc.Utf8.parse(plaintext);</p>
+<pre><code>return CryptoJs.AES.encrypt(plaintext, this.skey, {
+  mode: CryptoJs.mode[this.mode],
+  padding: CryptoJs.pad[this.padding],
+  iv: this.siv
+}).toString();
+</code></pre><p>  }</p>
+<p>  decrypt(ciphertext) {<br>    let plainBytes = CryptoJs.AES.decrypt(ciphertext, this.skey, {<br>      mode: CryptoJs.mode[this.mode],<br>      padding: CryptoJs.pad[this.padding],<br>      iv: this.siv<br>    });</p>
+<pre><code>return CryptoJs.enc.Utf8.stringify(plainBytes).toString();
+</code></pre><p>  }<br>}</p>
+<p>module.exports = crypto;</p>
+<h2 id="整体编码代码"><a href="#整体编码代码" class="headerlink" title="整体编码代码"></a>整体编码代码</h2><p>1、需下载的代码库<br>npm install md5 –save-dev<br>npm install sha256 –save-dev<br>npm install base64 –save-dev</p>
+<p>2、代码编写<br><code>dataParser.js</code><br>let md5 = require(‘md5’),<br>  sha256 = require(‘sha256’),<br>  gateway_salt = ‘/H0w&lt;c|:dYV(.q)b’,<br>  base64 = require(‘base-64’),<br>  CryptoJs = require(‘./crypto’);</p>
+<p>class dataParser {<br>  //new dataParser需要传入linkid,token<br>  constructor(linkid = ‘’, token = ‘’) {<br>    this.linkid = linkid;<br>    this.token = token;<br>  }<br>  //编译key<br>  get key() {</p>
+<pre><code>let key = sha256(this.token + &apos;eroad2016&apos;);
+let index = Number(this.linkid.match(/[0-9]/g).pop());
+
+key = key.substring(index, index + 16);
+
+return key;
+</code></pre><p>  }</p>
+<p>  get crypt() {<br>    return new CryptoJs(this.key);<br>  }<br>  //编码<br>  encryptData(data = {}) {</p>
+<pre><code>let crypt = this.crypt;
+
+let encryptedData = crypt.encrypt(JSON.stringify(data)),
+  MD5Data = md5(encryptedData),
+  MD5DataWithSalt = md5(MD5Data + this.key + gateway_salt);
+//返回的值都是直邮data和summary
+return {
+  data: encryptedData,
+  summary: MD5DataWithSalt
+}
+</code></pre><p>  }<br>  //解码<br>  decryptData(data) {</p>
+<pre><code>if (!(data.data &amp;&amp; data.summary)) {
+  return data;
+}
+
+let key = this.key,
+  encryptData = data.data,
+  MD5Data = md5(encryptData),
+  MD5DataWithSalt = md5(MD5Data + key + gateway_salt);
+
+if (data.summary === MD5DataWithSalt) {
+
+  return this.crypt.decrypt(encryptData);
+} else {
+
+  throw new Error(&apos;签名不一致，解密失败&apos;);
+}
+</code></pre><p>  }<br>  //需要传入到headers里面<br>  getIdentification(username, obj = {<br>    “type”: “basic”,<br>    “username”: username,<br>    “imei”: “869336029872296”,<br>    “language”: “zh”,<br>    “app_channel”: “ehr”,<br>    “info”: {<br>      ‘systemVersion’: 9.1,<br>      ‘systemModel’: ‘PC’,<br>      “deviceModel”: “M5”,<br>      “manufacturer”: “GiONEE”<br>    },<br>    “company_code”: “HULB”,<br>    version: ‘2.0.0’<br>  }) {<br>    obj.linkid = this.linkid;</p>
+<pre><code>return base64.encode(JSON.stringify(obj));
+</code></pre><p>  }<br>}</p>
+<p>module.exports = dataParser;</p>
+<h1 id="调用实例-vue方式"><a href="#调用实例-vue方式" class="headerlink" title="调用实例 (vue方式)"></a>调用实例 (vue方式)</h1><p>//getToken<br>import axios from ‘axios’<br>import dataParser from ‘./../../untils/dataParser’<br>import linkid from ‘./../../untils/linkid’<br>import aes from ‘./../../untils/aes’<br>export default {<br>    data () {<br>      return {<br>        error: false,<br>        token: ‘’<br>      }<br>    },<br>    methods: {<br>      getToken() {<br>        let parser = new dataParser(linkid)<br>        let that = this<br>        axios({<br>          headers: {<br>            identification: parser.getIdentification()<br>          },<br>          url: ‘/get_token’,<br>          method: ‘POST’,<br>          responseType: ‘json’<br>        }).then(function (res) {<br>          that.token = res.data.data.token<br>        })<br>      },<br>      login () {<br>        let that = this<br>        let username = document.getElementById(‘username’).value<br>        let password = document.getElementById(‘password’).value<br>        password = aes.aesEncrypt(password)<br>        let parsers = new dataParser(linkid, that.token)<br>        let data = {<br>          “username”: username,<br>          “password”: password<br>        }<br>        let params = parsers.encryptData(data)<br>        axios({<br>          headers:{<br>            identification: parsers.getIdentification(username)<br>          },<br>          data: params,<br>          method: ‘post’,<br>          url: ‘/mjson/login_new’<br>        }).then(function (res) {<br>          let data = JSON.parse(parsers.decryptData(res.data))<br>          if (data.code === 0) {<br>            that.error = false<br>            window.location.hash = ‘/home’<br>          } else if (data.code === 100) {<br>            document.getElementById(‘password’).value = ‘’<br>            that.error = true<br>          }<br>        })<br>      }<br>    },<br>    mounted () {<br>      document.title = ‘登陆’<br>      this.getToken()<br>    }<br>}</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/vue脚手架反向代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -799,141 +971,6 @@ response.end();
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/12/微信开发缩略图不显示的问题解决方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vine Yao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495200254229&di=fe7f600d4de8da478765839ee7d4fe9e&imgtype=0&src=http%3A%2F%2Fpic1.shejiben.com%2Fi%2Fupload%2F2013%2F03%2F19%2F20130319010757-14a40642-me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vine的个人微博">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/12/微信开发缩略图不显示的问题解决方法/" itemprop="url">微信开发缩略图不显示的问题解决方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-12T09:37:03+08:00">
-                2017-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="JS-SDK报错-invalid-signature签名错误"><a href="#JS-SDK报错-invalid-signature签名错误" class="headerlink" title="JS-SDK报错 invalid signature签名错误"></a>JS-SDK报错 invalid signature签名错误</h2><ul>
-<li><p>1、确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。</p>
-</li>
-<li><p>2、确认 config 中的 appid 与用来获取 jsapi_ticket 的 appid 一致。</p>
-</li>
-</ul>
-<h2 id="图片类型的错误"><a href="#图片类型的错误" class="headerlink" title="图片类型的错误"></a>图片类型的错误</h2><ul>
-<li><p>1、图片不能是base64类型的。</p>
-</li>
-<li><p>2、创建一个img标签，在body最前面<br><code>&lt;img style=&quot;width: 0; heigth: 0; position:absolute; left: 2000px&quot; src=&quot;XXX.jpg&quot;&gt;</code></p>
-</li>
-</ul>
-<h2 id="微信官方"><a href="#微信官方" class="headerlink" title="微信官方"></a>微信官方</h2><ul>
-<li>config 必须填写的内容</li>
-</ul>
-<p><code>wx.config({</code><br>    <code>debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</code><br>    <code>appId: &#39;&#39;, // 必填，公众号的唯一标识</code><br>    <code>timestamp: , // 必填，生成签名的时间戳</code><br>    <code>nonceStr: &#39;&#39;, // 必填，生成签名的随机串</code><br>    <code>signature: &#39;&#39;,// 必填，签名，见附录1</code><br>    <code>jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2</code><br><code>});</code></p>
-<ul>
-<li>分享给朋友</li>
-</ul>
-<p><code>wx.onMenuShareAppMessage({</code><br>    <code>title: &#39;&#39;, // 分享标题</code><br>    <code>desc: &#39;&#39;, // 分享描述</code><br>    <code>link: &#39;&#39;, // 分享链接</code><br>    <code>imgUrl: &#39;&#39;, // 分享图标</code><br>    <code>type: &#39;&#39;, // 分享类型,music、video或link，不填默认为link</code><br>    <code>dataUrl: &#39;&#39;, // 如果type是music或video，则要提供数据链接，默认为空</code><br>    <code>success: function () {</code><br>        <code>// 用户确认分享后执行的回调函数</code><br>    <code>},</code><br>    <code>cancel: function () {</code><br>        <code>// 用户取消分享后执行的回调函数</code><br>    <code>}</code><br><code>});</code></p>
-<ul>
-<li>分享到朋友圈</li>
-</ul>
-<p><code>wx.onMenuShareTimeline({</code><br>    <code>title: &#39;&#39;, // 分享标题</code><br>    <code>link: &#39;&#39;, // 分享链接</code><br>    <code>imgUrl: &#39;&#39;, // 分享图标</code><br>    <code>success: function () {</code><br>       <code>// 用户确认分享后执行的回调函数</code><br>    <code>},</code><br>    <code>cancel: function () {</code><br>        <code>// 用户取消分享后执行的回调函数</code><br>    <code>}</code><br><code>});</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -983,7 +1020,7 @@ response.end();
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
