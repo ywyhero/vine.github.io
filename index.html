@@ -322,69 +322,15 @@
       
         
           
-            <h1 id="密码AES加密"><a href="#密码AES加密" class="headerlink" title="密码AES加密"></a>密码AES加密</h1><p>1、npm install crypto-js –save-dev<br>2、代码编写<br>import CryptoJs from ‘crypto-js’<br><code>前端和ios的padding是Pkcs7，java的padding是Pkcs5</code><br>let key = CryptoJs.enc.Utf8.parse(“:<em>mU@-\”S61Eujx$c”);<br>let iv  = CryptoJs.enc.Utf8.parse(‘:</em>mU@-\”S61Eujx$c’);<br>let aes = {<br>    <code>加密</code><br>      aesEncrypt(plaintext) {<br>          return CryptoJs.AES.encrypt(plaintext, key, {mode: CryptoJs.mode[‘ECB’], padding: CryptoJs.pad[‘Pkcs7’], iv: iv}).toString();<br>      }<br>    <code>解密</code><br>    aesDecrypt(ciphertext) {<br>        let plainBytes = CryptoJs.AES.decrypt(ciphertext, key, {mode: CryptoJs.mode[‘ECB’], padding: CryptoJs.pad[‘Pkcs7’], iv: iv});<br>        return CryptoJs.enc.Utf8.stringify(plainBytes).toString();<br>    }<br>}<br>module.exports = aes;</p>
-<h1 id="整体加密"><a href="#整体加密" class="headerlink" title="整体加密"></a>整体加密</h1><h2 id="设置linkid（自行设置随机数）"><a href="#设置linkid（自行设置随机数）" class="headerlink" title="设置linkid（自行设置随机数）"></a>设置linkid（自行设置随机数）</h2><p>1、npm install uuid<br>2、代码编写<br><code>uuid.js</code><br>const uuidv4 = require(‘uuid’)<br>function getUuid () {<br>  let auuid = uuidv4()<br>  auuid = auuid.replace(/-/g, ‘’)<br>  return auuid<br>}<br>module.exports = {getUuid: getUuid}</p>
-<p><code>linkid.js</code><br>import uuid from ‘./uuid.js’<br>let linkid = uuid.getUuid()</p>
-<p>module.exports = linkid;</p>
-<h2 id="key值编码"><a href="#key值编码" class="headerlink" title="key值编码"></a>key值编码</h2><p>1、需要下载的代码库<br>npm install crypto-js –save-dev<br>npm install utf8-bytes</p>
-<p>2、代码编写<br><code>crypto.js</code><br>let CryptoJs = require(‘crypto-js’),<br>    bytes = require(‘utf8-bytes’);</p>
-<p>class crypto {<br>  constructor(key, iv = key, mode = ‘ECB’, padding = ‘ZeroPadding’) {<br>    this.key = key; //传入的key值<br>    this.iv = iv;<br>    this.mode = mode;<br>    this.padding = padding;<br>    this.skey = CryptoJs.enc.Utf8.parse(key);<br>    this.siv = CryptoJs.enc.Utf8.parse(iv);<br>  }</p>
-<p>  encrypt(plaintext) {<br>    let length = (16 - bytes(plaintext).length % 16) % 16;<br>    for (let i = 0; i &lt; length; i++) {<br>      plaintext += ‘ ‘;c<br>    }<br>    plaintext = CryptoJs.enc.Utf8.parse(plaintext);</p>
-<pre><code>return CryptoJs.AES.encrypt(plaintext, this.skey, {
-  mode: CryptoJs.mode[this.mode],
-  padding: CryptoJs.pad[this.padding],
-  iv: this.siv
-}).toString();
-</code></pre><p>  }</p>
-<p>  decrypt(ciphertext) {<br>    let plainBytes = CryptoJs.AES.decrypt(ciphertext, this.skey, {<br>      mode: CryptoJs.mode[this.mode],<br>      padding: CryptoJs.pad[this.padding],<br>      iv: this.siv<br>    });</p>
-<pre><code>return CryptoJs.enc.Utf8.stringify(plainBytes).toString();
-</code></pre><p>  }<br>}</p>
-<p>module.exports = crypto;</p>
-<h2 id="整体编码代码"><a href="#整体编码代码" class="headerlink" title="整体编码代码"></a>整体编码代码</h2><p>1、需下载的代码库<br>npm install md5 –save-dev<br>npm install sha256 –save-dev<br>npm install base64 –save-dev</p>
-<p>2、代码编写<br><code>dataParser.js</code><br>let md5 = require(‘md5’),<br>  sha256 = require(‘sha256’),<br>  gateway_salt = ‘/H0w&lt;c|:dYV(.q)b’,<br>  base64 = require(‘base-64’),<br>  CryptoJs = require(‘./crypto’);</p>
-<p>class dataParser {<br>  //new dataParser需要传入linkid,token<br>  constructor(linkid = ‘’, token = ‘’) {<br>    this.linkid = linkid;<br>    this.token = token;<br>  }<br>  //编译key<br>  get key() {</p>
-<pre><code>let key = sha256(this.token + &apos;eroad2016&apos;);
-let index = Number(this.linkid.match(/[0-9]/g).pop());
-
-key = key.substring(index, index + 16);
-
-return key;
-</code></pre><p>  }</p>
-<p>  get crypt() {<br>    return new CryptoJs(this.key);<br>  }<br>  //编码<br>  encryptData(data = {}) {</p>
-<pre><code>let crypt = this.crypt;
-
-let encryptedData = crypt.encrypt(JSON.stringify(data)),
-  MD5Data = md5(encryptedData),
-  MD5DataWithSalt = md5(MD5Data + this.key + gateway_salt);
-//返回的值都是直邮data和summary
-return {
-  data: encryptedData,
-  summary: MD5DataWithSalt
-}
-</code></pre><p>  }<br>  //解码<br>  decryptData(data) {</p>
-<pre><code>if (!(data.data &amp;&amp; data.summary)) {
-  return data;
-}
-
-let key = this.key,
-  encryptData = data.data,
-  MD5Data = md5(encryptData),
-  MD5DataWithSalt = md5(MD5Data + key + gateway_salt);
-
-if (data.summary === MD5DataWithSalt) {
-
-  return this.crypt.decrypt(encryptData);
-} else {
-
-  throw new Error(&apos;签名不一致，解密失败&apos;);
-}
-</code></pre><p>  }<br>  //需要传入到headers里面<br>  getIdentification(username, obj = {<br>    “type”: “basic”,<br>    “username”: username,<br>    “imei”: “869336029872296”,<br>    “language”: “zh”,<br>    “app_channel”: “ehr”,<br>    “info”: {<br>      ‘systemVersion’: 9.1,<br>      ‘systemModel’: ‘PC’,<br>      “deviceModel”: “M5”,<br>      “manufacturer”: “GiONEE”<br>    },<br>    “company_code”: “HULB”,<br>    version: ‘2.0.0’<br>  }) {<br>    obj.linkid = this.linkid;</p>
-<pre><code>return base64.encode(JSON.stringify(obj));
-</code></pre><p>  }<br>}</p>
-<p>module.exports = dataParser;</p>
-<h1 id="调用实例-vue方式"><a href="#调用实例-vue方式" class="headerlink" title="调用实例 (vue方式)"></a>调用实例 (vue方式)</h1><p>//getToken<br>import axios from ‘axios’<br>import dataParser from ‘./../../untils/dataParser’<br>import linkid from ‘./../../untils/linkid’<br>import aes from ‘./../../untils/aes’<br>export default {<br>    data () {<br>      return {<br>        error: false,<br>        token: ‘’<br>      }<br>    },<br>    methods: {<br>      getToken() {<br>        let parser = new dataParser(linkid)<br>        let that = this<br>        axios({<br>          headers: {<br>            identification: parser.getIdentification()<br>          },<br>          url: ‘/get_token’,<br>          method: ‘POST’,<br>          responseType: ‘json’<br>        }).then(function (res) {<br>          that.token = res.data.data.token<br>        })<br>      },<br>      login () {<br>        let that = this<br>        let username = document.getElementById(‘username’).value<br>        let password = document.getElementById(‘password’).value<br>        password = aes.aesEncrypt(password)<br>        let parsers = new dataParser(linkid, that.token)<br>        let data = {<br>          “username”: username,<br>          “password”: password<br>        }<br>        let params = parsers.encryptData(data)<br>        axios({<br>          headers:{<br>            identification: parsers.getIdentification(username)<br>          },<br>          data: params,<br>          method: ‘post’,<br>          url: ‘/mjson/login_new’<br>        }).then(function (res) {<br>          let data = JSON.parse(parsers.decryptData(res.data))<br>          if (data.code === 0) {<br>            that.error = false<br>            window.location.hash = ‘/home’<br>          } else if (data.code === 100) {<br>            document.getElementById(‘password’).value = ‘’<br>            that.error = true<br>          }<br>        })<br>      }<br>    },<br>    mounted () {<br>      document.title = ‘登陆’<br>      this.getToken()<br>    }<br>}</p>
-
-          
+          密码AES加密1、npm install crypto-js –save-dev2、代码编写import CryptoJs from ‘crypto-js’前端和ios的padding是Pkcs7，java的padding是Pkcs5let key = CryptoJs.enc.Utf8.parse
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/27/前端加密解决办法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -494,17 +440,22 @@ if (data.summary === MD5DataWithSalt) {
       
         
           
-            <h2 id="在项目中寻找到-config-index-js-文件"><a href="#在项目中寻找到-config-index-js-文件" class="headerlink" title="在项目中寻找到 ./config/index.js 文件"></a>在项目中寻找到 ./config/index.js 文件</h2><ul>
-<li><p>寻找到proxyTable:{}</p>
-</li>
-<li><p>然后就行修改</p>
-</li>
-</ul>
-<p>我本地地址为192.168.0.64:8080</p>
-<p>proxyTable: {<br>      ‘/web/get_companyinfo’:{<br>        target: ‘<a href="http://jint.ersoft.cn/web/get_companyinfo" target="_blank" rel="external">http://jint.ersoft.cn/web/get_companyinfo</a>‘,<br>        changeOrigin: true,<br>        pathRewrite: {<br>          ‘^/web/get_companyinfo’: ‘’<br>        }<br>      },<br>      ‘/web/login’: {<br>        target: ‘<a href="http://jint.ersoft.cn/web/login" target="_blank" rel="external">http://jint.ersoft.cn/web/login</a>‘,<br>        changeOrigin: true,<br>        pathRewrite: {<br>          ‘^/web/login’: ‘’<br>        }<br>      },<br>      ‘/web/dataset/call_kw’:{<br>        target: ‘<a href="http://192.168.0.104:8069/web/dataset/call_kw" target="_blank" rel="external">http://192.168.0.104:8069/web/dataset/call_kw</a>‘,<br>        changeOrigin: true,<br>        pathRewrite: {<br>          ‘^/web/dataset/call_kw’: ‘’<br>        }<br>      },<br>      ‘/news_content’: {<br>        target: ‘<a href="http://jint.ersoft.cn/news_content" target="_blank" rel="external">http://jint.ersoft.cn/news_content</a>‘,<br>        changeOrigin: true,<br>        pathRewrite: {<br>          ‘^/news_content’: ‘’<br>        }<br>      },<br>      ‘/web/dataset/call_kw/eroad_portal.news_type/news’: {<br>        target: ‘<a href="http://jint.ersoft.cn/web/dataset/call_kw/eroad_portal.news_type/news" target="_blank" rel="external">http://jint.ersoft.cn/web/dataset/call_kw/eroad_portal.news_type/news</a>‘,<br>        changeOrigin: true,<br>        pathRewrite: {<br>          ‘^/web/dataset/call_kw/eroad_portal.news_type/news’: ‘’<br>        }<br>      }<br>}</p>
-<p>修改过后就可以调用数据</p>
+          在项目中寻找到 ./config/index.js 文件
+寻找到proxyTable:{}
 
-          
+然后就行修改
+
+
+我本地地址为192.168.0.64:8080
+proxyTable: {      ‘/web/get_companyinfo’:{        target: ‘http://jin
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/26/vue脚手架反向代理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -614,12 +565,16 @@ if (data.summary === MD5DataWithSalt) {
       
         
           
-            <h1 id="ios-button按钮有默认样式的解决办法"><a href="#ios-button按钮有默认样式的解决办法" class="headerlink" title="ios button按钮有默认样式的解决办法"></a>ios button按钮有默认样式的解决办法</h1><p>input[type=”button”], input[type=”submit”], input[type=”reset”] {<br>  -webkit-appearance: none;<br>}</p>
-<h1 id="ios不兼容iframe的解决方法"><a href="#ios不兼容iframe的解决方法" class="headerlink" title="ios不兼容iframe的解决方法"></a>ios不兼容iframe的解决方法</h1><h2 id="html布局"><a href="#html布局" class="headerlink" title="html布局"></a>html布局</h2><p>  <code>&lt;div id=&quot;iframe-box&quot;&gt;</code><br>  <code>&lt;iframe id=&quot;ifram&quot; width=&quot;100%&quot;&gt;&lt;/iframe&gt;</code><br>  <code>&lt;/div&gt;</code></p>
-<h2 id="css样式"><a href="#css样式" class="headerlink" title="css样式"></a>css样式</h2><p>  #ifram {<br>    border: 0;<br>    width: 1px;<br>    min-width: 100%;<br>    *width: 100%;<br>  }</p>
-<h2 id="js逻辑"><a href="#js逻辑" class="headerlink" title="js逻辑"></a>js逻辑</h2><p>　　<br>  let ifram = document.getElementById(‘ifram’);<br>  if (navigator.userAgent.match(/iPad|iPhone/i)) {<br>    let iframe_box = document.getElementById(‘iframe-box’);<br>    iframe_box.style.width = 100 + ‘%’;<br>    iframe_box.style.overflowX = ‘hidden’;<br>    iframe_box.style.overflowY = ‘scroll’;<br>    iframe_box.style.webkitOverflowScrolling = ‘touch’;<br>    ifram.setAttribute(‘scrolling’, ‘no’);<br>    iframe_box.appendChild(ifram)<br>  }</p>
-
-          
+          ios button按钮有默认样式的解决办法input[type=”button”], input[type=”submit”], input[type=”reset”] {  -webkit-appearance: none;}
+ios不兼容iframe的解决方法html布局  &lt;div i
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/26/移动端开发ios与安卓的问题（持续更新）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -729,12 +684,19 @@ if (data.summary === MD5DataWithSalt) {
       
         
           
-            <h2 id="原理：删除掉node，重新下载node"><a href="#原理：删除掉node，重新下载node" class="headerlink" title="原理：删除掉node，重新下载node"></a>原理：删除掉node，重新下载node</h2><p>sudo rm -rf /usr/local/lib/node_modules</p>
-<p>sudo rm -rf ~/.npm</p>
-<p>brew uninstall –force node</p>
-<p>brew install node</p>
+          原理：删除掉node，重新下载nodesudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall –force node
+brew install node
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/19/cannot-find-module-semver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -844,101 +806,16 @@ if (data.summary === MD5DataWithSalt) {
       
         
           
-            <h1 id="安装node环境"><a href="#安装node环境" class="headerlink" title="安装node环境"></a>安装node环境</h1><p><code>brew install node</code><br>也可去node官网（中文网：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a> 英文网：<a href="https://nodejs.org/en/）下载安装包自行安装。" target="_blank" rel="external">https://nodejs.org/en/）下载安装包自行安装。</a></p>
-<h1 id="先创建一个服务-server-js"><a href="#先创建一个服务-server-js" class="headerlink" title="先创建一个服务 (server.js)"></a>先创建一个服务 (server.js)</h1><p>let http = require(‘http’);<br>function start () {<br>    function onRequest (request, response) {<br>        response.writeHead(200, {‘Content-Type’: ‘text/plain’});<br>        response.write(‘Hello World’);<br>        response.end();<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>start() //执行程序</p>
-<p><code>注:直接打开终端，跳转到当前文件夹输入node server终端应显示”服务已开启“。浏览器打开 http://localhost:8888 应显示“Hello World”。</code></p>
-<h1 id="为更好的开发，代码更加简洁，使用模块化开发"><a href="#为更好的开发，代码更加简洁，使用模块化开发" class="headerlink" title="为更好的开发，代码更加简洁，使用模块化开发"></a>为更好的开发，代码更加简洁，使用模块化开发</h1><ul>
-<li><p>修改server.js代码<br>let http = require(‘http’);<br>function start () {<br>  function onRequest (request, response) {</p>
-<pre><code>response.writeHead(200, {&apos;Content-Type&apos;: &apos;text/plain&apos;});
-response.write(&apos;Hello World&apos;);
-response.end();
-</code></pre><p>  }<br>  http.createServer(onRequest).listen(8888);<br>  console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
-</li>
-<li><p>添加index.js</p>
-</li>
-</ul>
-<p>let server = require(‘./server.js’);<br>server.start()</p>
-<p><code>注:在终端输入node index。效果应和上述效果一样。</code></p>
-<h1 id="添加路由"><a href="#添加路由" class="headerlink" title="添加路由"></a>添加路由</h1><ul>
-<li>创建route.js</li>
-</ul>
-<p>function route(pathname) {<br>    console.log(“路由接收” ＋ pathname);<br>}</p>
-<p>exports.route = route;</p>
-<ul>
-<li>server.js里面代码修改后如下：</li>
-</ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(pathname);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
-<ul>
-<li>index.js里面代码修改后如下：</li>
-</ul>
-<p>let server = require(‘./server.js’);<br>let router = require(‘./route);</p>
-<p>server.start(router.route);</p>
-<p><code>注:终端输入node index后会显示“服务已开始”和“路由接收／”字段</code></p>
-<h1 id="添加requestHandlers-js-路由需要执行的操作可在这里填写"><a href="#添加requestHandlers-js-路由需要执行的操作可在这里填写" class="headerlink" title="添加requestHandlers.js (路由需要执行的操作可在这里填写)"></a>添加requestHandlers.js (路由需要执行的操作可在这里填写)</h1><p>function start (response, request) {<br>    let body =<code>&#39;&lt;html&gt;&#39; +</code><br>        <code>&#39;&lt;head&gt;&#39; +</code><br>        <code>&#39;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; &#39; +</code><br>        <code>&#39;charset=UTF-8&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/head&gt;&#39; +</code><br>        <code>&#39;&lt;body&gt;&#39; +</code><br>        <code>&#39;&lt;form action=&quot;/upload&quot; enctype=&quot;multipart/form-data&quot; &#39; +</code><br>        <code>&#39;method=&quot;post&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;text&quot; name=&quot;upload&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;submit&quot; value=&quot;接收数据&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/form&gt;&#39; +</code><br>        <code>&#39;&lt;/body&gt;&#39; +</code><br>        <code>&#39;&lt;/html&gt;&#39;;</code><br>        response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>        response.write(body);<br>        response.end();<br>}</p>
-<p>function upload (response, request) {<br>    response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>    response.write(“Hello upload”);<br>    response.end();<br>}</p>
-<p>exports.start = start;<br>exports.upload = upload;</p>
-<ul>
-<li>route.js里面代码修改后如下：</li>
-</ul>
-<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, request)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
-<p>exports.route = route;</p>
-<ul>
-<li>server.js里面代码修改后如下：</li>
-</ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
-<ul>
-<li>index.js里面代码修改后如下：</li>
-</ul>
-<p>let server = require(‘./server.js’);<br>let router = require(‘./route’);<br>let requestHandlers = require(‘./requestHandlers’);</p>
-<p>let handle = {};</p>
-<p>handle[‘/‘] = requestHandlers.start;<br>handle[‘/start’] = requestHandlers.start;<br>handle[‘/upload’] = requestHandlers.upload;</p>
-<p>server.start(router.route, handle);</p>
-<p><code>注:打开终端输入node index后打开页面应该是一个input和一个button按钮，点击button按钮跳转到http://losthost:8888/upload 并且页面显示“Hello upload”。</code></p>
-<h1 id="修改代码使点击按钮后获取输入到input里面的内容"><a href="#修改代码使点击按钮后获取输入到input里面的内容" class="headerlink" title="修改代码使点击按钮后获取输入到input里面的内容"></a>修改代码使点击按钮后获取输入到input里面的内容</h1><ul>
-<li>server.js里面代码修改后如下：</li>
-</ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>function start (route, handle) {<br>    function onRequest (request, response) {<br>        let postData = ‘’<br>        let pathname = url.parse(request.url).pathname;<br>        request.setEncoding(‘utf8’);<br>        request.addListener(‘data’,function(chunk){<br>            postData += chunk;<br>            console.log(‘获取到的数据为’ ＋ postData)<br>        })<br>        request.addListener(‘end’, function(){<br>            route(handle, pathname, response, postData);<br>        })<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}<br>exports.start = start;</p>
-<ul>
-<li>requestHandlers.js里面代码修改后如下：</li>
-</ul>
-<p>let querystring = require(‘querystring’);</p>
-<p>function start (response, request) {<br>    let body = <code>&#39;&lt;html&gt;&#39; +</code><br>        <code>&#39;&lt;head&gt;&#39; +</code><br>        <code>&#39;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; &#39; +</code><br>        <code>&#39;charset=UTF-8&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/head&gt;&#39; +</code><br>        <code>&#39;&lt;body&gt;&#39; +</code><br>        <code>&#39;&lt;form action=&quot;/upload&quot; enctype=&quot;multipart/form-data&quot; &#39; +</code><br>        <code>&#39;method=&quot;post&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;text&quot; name=&quot;text&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;submit&quot; value=&quot;接收数据&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/form&gt;&#39; +</code><br>        <code>&#39;&lt;/body&gt;&#39; +</code><br>        <code>&#39;&lt;/html&gt;&#39;;</code><br>        response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>        response.write(body);<br>        response.end();<br>}</p>
-<p>function upload (response, postData) {<br>    response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>    response.write(querystring.parse(postData).text);<br>    response.end();<br>}</p>
-<p>exports.start = start;<br>exports.upload = upload;</p>
-<ul>
-<li>route.js里面代码修改后如下：</li>
-</ul>
-<p>function route(handle, pathname, response, postData) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, postData)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
-<p>exports.route = route;</p>
-<p><code>注：在终端输入node index后，终端显示为“服务已开启”，打开http://losthost:8888 页面为一个input和一个按钮，在input输入内容（“不能输入中文，否则乱码，是Buffer的问题。“）终端显示为“获取到的数据为。。。”并且页面跳转到http://losthost:8888／upload 并显示你输入的内容。</code></p>
-<h1 id="大概的逻辑已走通，下面我们开始上传图片，并显示图片"><a href="#大概的逻辑已走通，下面我们开始上传图片，并显示图片" class="headerlink" title="大概的逻辑已走通，下面我们开始上传图片，并显示图片"></a>大概的逻辑已走通，下面我们开始上传图片，并显示图片</h1><ul>
-<li>requestHandlers.js里面代码修改后如下：</li>
-</ul>
-<p>let querystring = require(‘querystring’);<br>let formidable = require(‘formidable’); //需要npm i formidable 下载<br>let fs = require(‘fs’);</p>
-<p>function start (response, request) {<br>    let body = <code>&#39;&lt;html&gt;&#39; +</code><br>        <code>&#39;&lt;head&gt;&#39; +</code><br>        <code>&#39;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; &#39; +</code><br>        <code>&#39;charset=UTF-8&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/head&gt;&#39; +</code><br>        <code>&#39;&lt;body&gt;&#39; +</code><br>        <code>&#39;&lt;form action=&quot;/upload&quot; enctype=&quot;multipart/form-data&quot; &#39; +</code><br>        <code>&#39;method=&quot;post&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;file&quot; name=&quot;upload&quot;&gt;&#39; +</code><br>        <code>&#39;&lt;input type=&quot;submit&quot; value=&quot;接收数据&quot; /&gt;&#39; +</code><br>        <code>&#39;&lt;/form&gt;&#39; +</code><br>        <code>&#39;&lt;/body&gt;&#39; +</code><br>        <code>&#39;&lt;/html&gt;&#39;;</code><br>        response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>        response.write(body);<br>        response.end();<br>}<br><code>注：表单中enctype=&quot;multipart/form-data&quot;的意思，是设置表单的MIME编码。默认情况，这个编码格式是application/x-www-form-urlencoded，不能用于文件上传；只有使用了multipart/form-data，才能完整的传递文件数据，进行下面的操作. enctype=&quot;multipart/form-data&quot;是上传二进制数据;form里面的input的值以2进制的方式传过去。</code></p>
-<p>function upload (response, request) {<br>    let form = new formidable.IncomingForm();<br>    form.parse(request, function(err, fields, files){<br>        fs.renameSync(files.upload.path, ‘./img/test.png’);<br>        response.writeHead(200, {‘Content-Type’: ‘text/html’});<br>        response.write(“<code>&lt;img src=&#39;/show&#39;&gt;</code>“);<br>        response.end();<br>    })<br>}<br><code>注：需要在本地创建一个img文件夹。</code></p>
-<p>function show (response, request) {<br>    fs.readFile(‘./img/test.png’, ‘binary’, function(err, file) {<br>        if(err) {<br>            response.writeHead(500, {‘Content-Type’: ‘text/plain’});<br>            response.write(err);<br>            response.end();<br>        } else {<br>            response.writeHead(500, {‘Content-Type’: ‘image/png’});<br>            response.write(file, ‘binary’);<br>            response.end();<br>        }<br>    })<br>}</p>
-<p>exports.start = start;<br>exports.upload = upload;<br>exports.show = show;</p>
-<ul>
-<li>route.js里面代码修改后如下：</li>
-</ul>
-<p>function route(handle, pathname, response, request) {<br>    if(typeof handle[pathname] === ‘function’) {<br>        <code>handle[pathname](response, request)</code><br>    } else {<br>        response.writeHead(404, {‘Content-Type’: ‘text/html’});<br>        response.write(“404 Not Found”);<br>        response.end();<br>    }<br>}</p>
-<p>exports.route = route;</p>
-<ul>
-<li>server.js里面代码修改后如下：</li>
-</ul>
-<p>let http = require(‘http’);<br>let url = require(‘url’);<br>functon start (route, handle) {<br>    function onRequest (request, response) {<br>        let pathname = url.parse(request.url).pathname;<br>        route(handle, pathname, response, request);<br>    }<br>    http.createServer(onRequest).listen(8888);<br>    console.log(‘服务已开启’);<br>}</p>
-<p>exports.start = start;</p>
-<ul>
-<li>index.js里面代码修改后如下：</li>
-</ul>
-<p>let server = require(‘./server.js’);<br>let router = require(‘./route’);<br>let requestHandlers = require(‘./requestHandlers’);</p>
-<p>let handle = {};</p>
-<p>handle[‘/‘] = requestHandlers.start;<br>handle[‘/start’] = requestHandlers.start;<br>handle[‘/upload’] = requestHandlers.upload;<br>handle[‘/show’] = requestHandlers.show;</p>
-<p>server.start(router.route, handle);</p>
-<p><code>注：终端输入node index，打开页面http://localhost:8888 显示页面为选择文件和一个按钮，点击选择一个图片，并点击按钮，页面跳转到http://localhost:8888/upload 并显示选择的图片。</code></p>
-
-          
+          安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。
+先创建一个服务 (server.js)let http = require(‘http’);function 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/19/node学习之图片上传/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

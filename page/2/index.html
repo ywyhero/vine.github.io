@@ -322,32 +322,18 @@
       
         
           
-            <h2 id="JS-SDK报错-invalid-signature签名错误"><a href="#JS-SDK报错-invalid-signature签名错误" class="headerlink" title="JS-SDK报错 invalid signature签名错误"></a>JS-SDK报错 invalid signature签名错误</h2><ul>
-<li><p>1、确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。</p>
-</li>
-<li><p>2、确认 config 中的 appid 与用来获取 jsapi_ticket 的 appid 一致。</p>
-</li>
-</ul>
-<h2 id="图片类型的错误"><a href="#图片类型的错误" class="headerlink" title="图片类型的错误"></a>图片类型的错误</h2><ul>
-<li><p>1、图片不能是base64类型的。</p>
-</li>
-<li><p>2、创建一个img标签，在body最前面<br><code>&lt;img style=&quot;width: 0; heigth: 0; position:absolute; left: 2000px&quot; src=&quot;XXX.jpg&quot;&gt;</code></p>
-</li>
-</ul>
-<h2 id="微信官方"><a href="#微信官方" class="headerlink" title="微信官方"></a>微信官方</h2><ul>
-<li>config 必须填写的内容</li>
-</ul>
-<p><code>wx.config({</code><br>    <code>debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</code><br>    <code>appId: &#39;&#39;, // 必填，公众号的唯一标识</code><br>    <code>timestamp: , // 必填，生成签名的时间戳</code><br>    <code>nonceStr: &#39;&#39;, // 必填，生成签名的随机串</code><br>    <code>signature: &#39;&#39;,// 必填，签名，见附录1</code><br>    <code>jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2</code><br><code>});</code></p>
-<ul>
-<li>分享给朋友</li>
-</ul>
-<p><code>wx.onMenuShareAppMessage({</code><br>    <code>title: &#39;&#39;, // 分享标题</code><br>    <code>desc: &#39;&#39;, // 分享描述</code><br>    <code>link: &#39;&#39;, // 分享链接</code><br>    <code>imgUrl: &#39;&#39;, // 分享图标</code><br>    <code>type: &#39;&#39;, // 分享类型,music、video或link，不填默认为link</code><br>    <code>dataUrl: &#39;&#39;, // 如果type是music或video，则要提供数据链接，默认为空</code><br>    <code>success: function () {</code><br>        <code>// 用户确认分享后执行的回调函数</code><br>    <code>},</code><br>    <code>cancel: function () {</code><br>        <code>// 用户取消分享后执行的回调函数</code><br>    <code>}</code><br><code>});</code></p>
-<ul>
-<li>分享到朋友圈</li>
-</ul>
-<p><code>wx.onMenuShareTimeline({</code><br>    <code>title: &#39;&#39;, // 分享标题</code><br>    <code>link: &#39;&#39;, // 分享链接</code><br>    <code>imgUrl: &#39;&#39;, // 分享图标</code><br>    <code>success: function () {</code><br>       <code>// 用户确认分享后执行的回调函数</code><br>    <code>},</code><br>    <code>cancel: function () {</code><br>        <code>// 用户取消分享后执行的回调函数</code><br>    <code>}</code><br><code>});</code></p>
+          JS-SDK报错 invalid signature签名错误
+1、确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。
 
-          
+2、确认 config 中的 appid 与用来获取 jsapi_ticket 的 ap
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/12/微信开发缩略图不显示的问题解决方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -457,59 +443,22 @@
       
         
           
-            <h2 id="更换为hexo主题"><a href="#更换为hexo主题" class="headerlink" title="更换为hexo主题"></a>更换为hexo主题</h2><ul>
-<li><p>进入hexo文件夹</p>
-<p>cd your-hexo-site</p>
-</li>
-<li><p>克隆next代码并存放到 themes/next 目录下</p>
-<p>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next</p>
-</li>
-<li><p>在站点 _config.yml 中修改:</p>
-<p>theme: next</p>
-</li>
-</ul>
-<h2 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h2><ul>
-<li><p>在站点 _config.yml 中添加</p>
-<p>avatar: http://….  # 头像的URL</p>
-</li>
-</ul>
-<h2 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h2><ul>
-<li><p>新建一个页面，命名为 categories</p>
-<p>hexo new page categories</p>
-</li>
-<li><p>在 source/categories 目录的 index.md 中修改:</p>
-<p>title: 分类<br>date: 2015-12-02 12:44:45<br>type: “categories”</p>
-</li>
-<li><p>在主题的 _config.yml 中取消注释:</p>
-<p>categories: /categories</p>
-</li>
-<li><p>在要分类的文章中加入 category 属性:</p>
-<p>category: “hexo”  # 分类为 hexo </p>
-</li>
-</ul>
-<h2 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h2><ul>
-<li><p>新建一个页面，命名为 tags</p>
-<p>hexo new page tags</p>
-</li>
-<li><p>在 source/tags 目录的 index.md 中修改:</p>
-<p>title: tags<br>date: 2015-12-02 12:10:34<br>type: “tags”</p>
-</li>
-<li><p>在主题的 _config.yml 中取消注释:</p>
-<p>tags: /tags</p>
-</li>
-<li><p>在需要变迁的文章中加入 tgs 属性:</p>
-<p>tags: [spark,sparkSQL]  # 添加spark和sparkSQL两个标签</p>
-</li>
-</ul>
-<h2 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h2><ul>
-<li><p>在 <a href="“http://duoshuo.com“">多说</a> 创建一个站点，创建时填写的多说域名就是你的 duoshuo_shortname</p>
-</li>
-<li><p>在站点 _config.yml 中设置：</p>
-<p>duoshuo_shortname: your_duoshuo_shortname</p>
-</li>
-</ul>
+          更换为hexo主题
+进入hexo文件夹
+cd your-hexo-site
 
-          
+克隆next代码并存放到 themes/next 目录下
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+
+在站点 _config.yml 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/08/hexo换肤/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
