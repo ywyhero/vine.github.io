@@ -97,14 +97,14 @@
 <meta property="og:url" content="http://ywyhero.github.io/2017/06/15/vue脚手架打包不能显示图片和内容的问题/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
 <meta property="og:description" content="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。首先我们先看下打包后页面代码的样子可以看出来所有的链接地址都是/static，可以改成./static 可以发">
-<meta property="og:image" content="http://ywyhero.github.io/2017/06/15/img/1.png">
-<meta property="og:image" content="http://ywyhero.github.io/2017/06/15/img/2.png">
-<meta property="og:image" content="http://ywyhero.github.io/2017/06/15/img/3.png">
-<meta property="og:updated_time" content="2017-06-15T08:02:23.000Z">
+<meta property="og:image" content="http://ywyhero.github.io/img/1.png">
+<meta property="og:image" content="http://ywyhero.github.io/img/2.png">
+<meta property="og:image" content="http://ywyhero.github.io/img/3.png">
+<meta property="og:updated_time" content="2017-06-15T08:17:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue脚手架打包不能显示图片和内容的问题">
 <meta name="twitter:description" content="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。首先我们先看下打包后页面代码的样子可以看出来所有的链接地址都是/static，可以改成./static 可以发">
-<meta name="twitter:image" content="http://ywyhero.github.io/2017/06/15/img/1.png">
+<meta name="twitter:image" content="http://ywyhero.github.io/img/1.png">
 
 
 
@@ -344,8 +344,8 @@
       
 
       
-        <h2 id="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。"><a href="#在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。" class="headerlink" title="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。"></a>在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。</h2><h3 id="首先我们先看下打包后页面代码的样子"><a href="#首先我们先看下打包后页面代码的样子" class="headerlink" title="首先我们先看下打包后页面代码的样子"></a>首先我们先看下打包后页面代码的样子</h3><p><img src="./../img/1.png" alt="Alt text"><br>可以看出来所有的链接地址都是/static，可以改成./static 可以发现有惊喜<br>那么怎么才能打包后自动变成./static呢<br>我们来看下vue-cli脚手架webpack的配置<br>找到config文件夹找index.js<br>可以看下如图所示<br><img src="./../img/2.png" alt="Alt text"><br>相信小伙伴们都会改了吧？在／前面加个点就可以‘./’</p>
-<h3 id="图片不显示的问题"><a href="#图片不显示的问题" class="headerlink" title="图片不显示的问题"></a>图片不显示的问题</h3><p>这个问题还是在网上找了很多方法才解决的，开始以为也是地址问题，后来才发现可能是打包后压缩的问题。<br>找到build文件夹webpack.cbase.conf.js<br><img src="./../img/3.png" alt="Alt text"><br>看图里的limit:10000就是限制了你的图片只能小于10k，大于10k就显示不了了。<br>想要现实可以自行设置一下，就行了。</p>
+        <h2 id="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。"><a href="#在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。" class="headerlink" title="在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。"></a>在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。</h2><h3 id="首先我们先看下打包后页面代码的样子"><a href="#首先我们先看下打包后页面代码的样子" class="headerlink" title="首先我们先看下打包后页面代码的样子"></a>首先我们先看下打包后页面代码的样子</h3><p><img src="./../../../../img/1.png" alt="Alt text"><br>可以看出来所有的链接地址都是/static，可以改成./static 可以发现有惊喜<br>那么怎么才能打包后自动变成./static呢<br>我们来看下vue-cli脚手架webpack的配置<br>找到config文件夹找index.js<br>可以看下如图所示<br><img src="./../../../../img/2.png" alt="Alt text"><br>相信小伙伴们都会改了吧？在／前面加个点就可以‘./’</p>
+<h3 id="图片不显示的问题"><a href="#图片不显示的问题" class="headerlink" title="图片不显示的问题"></a>图片不显示的问题</h3><p>这个问题还是在网上找了很多方法才解决的，开始以为也是地址问题，后来才发现可能是打包后压缩的问题。<br>找到build文件夹webpack.cbase.conf.js<br><img src="./../../../../img/3.png" alt="Alt text"><br>看图里的limit:10000就是限制了你的图片只能小于10k，大于10k就显示不了了。<br>想要现实可以自行设置一下，就行了。</p>
 
       
     </div>
