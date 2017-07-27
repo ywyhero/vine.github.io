@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://ywyhero.github.io/2017/07/27/前端点击复制的解决方案/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
 <meta property="og:description" content="某天突然来了一个点击复制到剪切板的需求，之前没有做过这类的，于是在网上找了一大推解决方案。 用js原生写的（浏览器兼容是很大的问题） 复制框架（ZeroClipboard,jquery.zclip,clipboard等）  由于兼容问题js原生的就不考虑了，框架中，jquery.zclip需要引进jquery，所以也不再考虑范围之内了。ZeroClipboard，clipboard两个框架都是比较">
-<meta property="og:updated_time" content="2017-07-27T03:15:23.000Z">
+<meta property="og:updated_time" content="2017-07-27T03:16:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端点击复制的解决方案">
 <meta name="twitter:description" content="某天突然来了一个点击复制到剪切板的需求，之前没有做过这类的，于是在网上找了一大推解决方案。 用js原生写的（浏览器兼容是很大的问题） 复制框架（ZeroClipboard,jquery.zclip,clipboard等）  由于兼容问题js原生的就不考虑了，框架中，jquery.zclip需要引进jquery，所以也不再考虑范围之内了。ZeroClipboard，clipboard两个框架都是比较">
@@ -332,13 +332,10 @@
     Cut to clipboard
 &lt;/button&gt;</code></p>
 <p>复制成功和失败后的操作：</p>
-<p>`clipboard.on(‘success’, function(e) {<br>    console.info(‘Action:’, e.action);<br>    console.info(‘Text:’, e.text);<br>    console.info(‘Trigger:’, e.trigger);</p>
+<p>clipboard.on(‘success’, function(e) {<br>    console.info(‘Action:’, e.action);<br>    console.info(‘Text:’, e.text);<br>    console.info(‘Trigger:’, e.trigger);</p>
 <pre><code>e.clearSelection();
-</code></pre><p>});`</p>
-<p><code>clipboard.on(&#39;error&#39;, function(e) {
-    console.error(&#39;Action:&#39;, e.action);
-    console.error(&#39;Trigger:&#39;, e.trigger);
-});</code></p>
+</code></pre><p>});</p>
+<p>clipboard.on(‘error’, function(e) {<br>    console.error(‘Action:’, e.action);<br>    console.error(‘Trigger:’, e.trigger);<br>});</p>
 
       
     </div>
