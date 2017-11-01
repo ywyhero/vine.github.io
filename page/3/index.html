@@ -93,7 +93,7 @@
 <meta name="description" content="在你迷茫无措的时候，认真学习绝不会是一个错的选择。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vine的个人微博">
-<meta property="og:url" content="http://ywyhero.github.io/page/2/index.html">
+<meta property="og:url" content="http://ywyhero.github.io/page/3/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
 <meta property="og:description" content="在你迷茫无措的时候，认真学习绝不会是一个错的选择。">
 <meta name="twitter:card" content="summary">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://ywyhero.github.io/page/2/"/>
+  <link rel="canonical" href="http://ywyhero.github.io/page/3/"/>
 
 
 
@@ -254,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/07/27/前端点击复制的解决方案/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/19/cannot-find-module-semver/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -273,7 +273,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/27/前端点击复制的解决方案/" itemprop="url">前端点击复制的解决方案</a></h1>
+                <a class="post-title-link" href="/2017/05/19/cannot-find-module-semver/" itemprop="url">cannot find module semver的解决方法</a></h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T10:54:21+08:00">
-                2017-07-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T18:59:50+08:00">
+                2017-05-19
               </time>
             
 
@@ -344,16 +344,15 @@
       
         
           
-          某天突然来了一个点击复制到剪切板的需求，之前没有做过这类的，于是在网上找了一大推解决方案。
+          原理：删除掉node，重新下载nodesudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf ~/.npm
+brew uninstall –force node
+brew install node
 
-用js原生写的（浏览器兼容是很大的问题）
-复制框架（ZeroClipboard,jquery.zclip,clipboard等）
-
-由于兼容问题js原生的就不考虑了，框架中，jquery.zclip需要引进
-          ...
+          
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/27/前端点击复制的解决方案/#more" rel="contents">
+            <a class="btn" href="/2017/05/19/cannot-find-module-semver/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -399,7 +398,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/06/15/vue脚手架打包不能显示图片和内容的问题/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/19/node学习之图片上传/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -418,7 +417,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/15/vue脚手架打包不能显示图片和内容的问题/" itemprop="url">vue脚手架打包不能显示图片和内容的问题</a></h1>
+                <a class="post-title-link" href="/2017/05/19/node学习之图片上传/" itemprop="url">node学习之图片上传</a></h1>
         
 
         <div class="post-meta">
@@ -430,288 +429,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T15:05:39+08:00">
-                2017-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工作问题/" itemprop="url" rel="index">
-                    <span itemprop="name">工作问题</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在日常用vue开发的时候，很多时候小伙伴们为了节省时间都使用vue-cli脚手架。然而在使用的时候会遇到一个“坑”，就是在我们完成开发后build后发现打开压缩后的html问题是个空白页面，看着自己辛辛苦苦开发出来的内容打包后不显示是不是很纠结。现在我们来看看是什么原因及怎么解决这个问题。首先我们先
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/15/vue脚手架打包不能显示图片和内容的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/06/02/移动端开发ios与安卓的问题（持续更新）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vine Yao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495200254229&di=fe7f600d4de8da478765839ee7d4fe9e&imgtype=0&src=http%3A%2F%2Fpic1.shejiben.com%2Fi%2Fupload%2F2013%2F03%2F19%2F20130319010757-14a40642-me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vine的个人微博">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/02/移动端开发ios与安卓的问题（持续更新）/" itemprop="url">移动端开发ios与安卓的问题（持续更新）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T10:23:05+08:00">
-                2017-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工作问题/" itemprop="url" rel="index">
-                    <span itemprop="name">工作问题</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          安卓focus输入框时页面被压缩的解决办法原理：focus时页面宽度等于屏幕宽度 blur时页面宽度设为100%或者auto  setFocusHeight () {      let login = document.querySelector(‘.login’);      let height
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/02/移动端开发ios与安卓的问题（持续更新）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/27/前端加密解决办法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vine Yao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495200254229&di=fe7f600d4de8da478765839ee7d4fe9e&imgtype=0&src=http%3A%2F%2Fpic1.shejiben.com%2Fi%2Fupload%2F2013%2F03%2F19%2F20130319010757-14a40642-me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vine的个人微博">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/27/前端加密解决办法/" itemprop="url">前端加密解决办法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-27T14:43:57+08:00">
-                2017-05-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T18:44:19+08:00">
+                2017-05-19
               </time>
             
 
@@ -769,11 +488,12 @@
       
         
           
-          密码AES加密1、npm install crypto-js –save-dev2、代码编写import CryptoJs from ‘crypto-js’前端和ios的padding是Pkcs7，java的padding是Pkcs5let key = CryptoJs.enc.Utf8.parse
+          安装node环境brew install node也可去node官网（中文网：http://nodejs.cn/ 英文网：https://nodejs.org/en/）下载安装包自行安装。
+先创建一个服务 (server.js)let http = require(‘http’);function 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/27/前端加密解决办法/#more" rel="contents">
+            <a class="btn" href="/2017/05/19/node学习之图片上传/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -819,7 +539,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/26/vue脚手架反向代理/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/12/微信开发缩略图不显示的问题解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -838,7 +558,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/26/vue脚手架反向代理/" itemprop="url">vue脚手架反向代理</a></h1>
+                <a class="post-title-link" href="/2017/05/12/微信开发缩略图不显示的问题解决方法/" itemprop="url">微信开发缩略图不显示的问题解决方法</a></h1>
         
 
         <div class="post-meta">
@@ -850,8 +570,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-26T10:27:15+08:00">
-                2017-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-12T09:37:03+08:00">
+                2017-05-12
               </time>
             
 
@@ -909,18 +629,161 @@
       
         
           
-          在项目中寻找到 ./config/index.js 文件
-寻找到proxyTable:{}
+          JS-SDK报错 invalid signature签名错误
+1、确认config中nonceStr（js中驼峰标准大写S）, timestamp与用以签名中的对应noncestr, timestamp一致。
 
-然后就行修改
-
-
-我本地地址为192.168.0.64:8080
-proxyTable: {      ‘/web/get_companyinfo’:{        target: ‘http://jin
+2、确认 config 中的 appid 与用来获取 jsapi_ticket 的 ap
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/26/vue脚手架反向代理/#more" rel="contents">
+            <a class="btn" href="/2017/05/12/微信开发缩略图不显示的问题解决方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/08/hexo换肤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vine Yao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1495200254229&di=fe7f600d4de8da478765839ee7d4fe9e&imgtype=0&src=http%3A%2F%2Fpic1.shejiben.com%2Fi%2Fupload%2F2013%2F03%2F19%2F20130319010757-14a40642-me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vine的个人微博">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/08/hexo换肤/" itemprop="url">hexo换肤</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-08T15:17:34+08:00">
+                2017-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习日志/" itemprop="url" rel="index">
+                    <span itemprop="name">学习日志</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          更换为hexo主题
+进入hexo文件夹
+cd your-hexo-site
+
+克隆next代码并存放到 themes/next 目录下
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+
+在站点 _config.yml 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/08/hexo换肤/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -961,7 +824,7 @@ proxyTable: {      ‘/web/get_companyinfo’:{        target: ‘http://jin
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 
 
