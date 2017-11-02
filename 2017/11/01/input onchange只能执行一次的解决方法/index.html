@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。 ##这样就可以完美的解决了这个问题。">
+<meta name="description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=obj.outerHTML;}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="input onchange只能执行一次的解决方法">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/01/input onchange只能执行一次的解决方法/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。 ##这样就可以完美的解决了这个问题。">
-<meta property="og:updated_time" content="2017-11-01T08:12:29.000Z">
+<meta property="og:description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=obj.outerHTML;}">
+<meta property="og:updated_time" content="2017-11-02T08:19:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="input onchange只能执行一次的解决方法">
-<meta name="twitter:description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。 ##这样就可以完美的解决了这个问题。">
+<meta name="twitter:description" content="##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=obj.outerHTML;}">
 
 
 
@@ -339,7 +339,7 @@
       
 
       
-        <p>##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。</p>
+        <p>##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。<br>兼容ie10的写法：<br>let obj = document.getElementById(id) ;<br>if(obj.outerHTML){  //IE重置表单不能清空file值<br>    obj.outerHTML=obj.outerHTML;<br>}</p>
 <p>##这样就可以完美的解决了这个问题。</p>
 
       
