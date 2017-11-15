@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   wx.request({            url: ‘xxxxxx’,            data: {">
+<meta name="description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序保存图片">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/15/微信小程序保存图片/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   wx.request({            url: ‘xxxxxx’,            data: {">
-<meta property="og:updated_time" content="2017-11-15T03:36:01.000Z">
+<meta property="og:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
+<meta property="og:updated_time" content="2017-11-15T03:51:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序保存图片">
-<meta name="twitter:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   wx.request({            url: ‘xxxxxx’,            data: {">
+<meta name="twitter:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
 
 
 
@@ -344,35 +344,35 @@
 <p>1.先用wx.downloadFile 会先生成临时的图片url地址</p>
 <p>2.再用wx.saveImageToPhotosAlbum保存图片就可以了</p>
 <p>案例： </p>
-<p> wx.request({<br>            url: ‘xxxxxx’,<br>            data: {<br>                html: html<br>            },<br>            method: ‘POST’,<br>            success: function(res) {<br>                wx.downloadFile({                                        //先用downloFile下载图片到本地<br>                    url: app.globalData.settings.host + res.data.result, //通过后台获取到的图片地址<br>                    success: function(data) {</p>
-<pre><code>                wx.saveImageToPhotosAlbum({                      //保存图片到本地相册     
-                    filePath: data.tempFilePath,                 //filepath为生成的临时的地址
-                    success: function(res) {
-                        wx.showToast({
-                            title: &apos;保存成功&apos;,
-                            icon: &apos;success&apos;,
-                            duration: 3000,
-                            mask: true
-                        })
-                    },
-                    fail: function(res) {
-                        wx.showToast({
-                            title: &apos;保存失败&apos;,
-                            icon: &apos;success&apos;,
-                            duration: 3000,
-                            mask: true
-                        })
-                    },
-                    complete: function(res) {
-                        console.log(res)
-                    }
-                })
-            }
-        })
+<p> `wx.request({<br>    url: ‘xxxxxx’,<br>    data: {<br>        html: html<br>    },<br>    method: ‘POST’,<br>    success: function(res) {<br>        wx.downloadFile({                                        //先用downloFile下载图片到本地<br>            url: app.globalData.settings.host + res.data.result, //通过后台获取到的图片地址<br>            success: function(data) {</p>
+<pre><code>            wx.saveImageToPhotosAlbum({                      //保存图片到本地相册     
+                filePath: data.tempFilePath,                 //filepath为生成的临时的地址
+                success: function(res) {
+                    wx.showToast({
+                        title: &apos;保存成功&apos;,
+                        icon: &apos;success&apos;,
+                        duration: 3000,
+                        mask: true
+                    })
+                },
+                fail: function(res) {
+                    wx.showToast({
+                        title: &apos;保存失败&apos;,
+                        icon: &apos;success&apos;,
+                        duration: 3000,
+                        mask: true
+                    })
+                },
+                complete: function(res) {
+                    console.log(res)
+                }
+            })
+        }
+    })
 
-    }
-})
-</code></pre>
+}
+</code></pre><p>})`</p>
+
       
     </div>
 
