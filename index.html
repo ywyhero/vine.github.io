@@ -919,7 +919,7 @@ async readLocalFile(){
       
         
           
-          ##在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：let obj = document.getElementById(id) ;if(obj.outerHTML){  /
+          在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。let obj = document.getElementById(id) ;if(obj
           ...
           <!--noindex-->
           <div class="post-button text-center">
