@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，    window.jQuery = require(‘jquery’) //全局jquery    let Uploader = require(‘./../uploader/webuploader’) //调用想要js export default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加i">
+<meta name="description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，12345window.jQuery = require(&apos;jquery&apos;) //全局jquerylet Uploader = require(&apos;./../uploader/webuploader&apos;) //调用想要jsexport default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加ignor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vuecli使用第三方js时出现问题">
 <meta property="og:url" content="http://ywyhero.github.io/2017/12/25/vuecli使用第三方js时出现问题/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，    window.jQuery = require(‘jquery’) //全局jquery    let Uploader = require(‘./../uploader/webuploader’) //调用想要js export default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加i">
-<meta property="og:updated_time" content="2017-12-25T10:45:43.000Z">
+<meta property="og:description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，12345window.jQuery = require(&apos;jquery&apos;) //全局jquerylet Uploader = require(&apos;./../uploader/webuploader&apos;) //调用想要jsexport default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加ignor">
+<meta property="og:updated_time" content="2018-03-22T03:56:18.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuecli使用第三方js时出现问题">
-<meta name="twitter:description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，    window.jQuery = require(‘jquery’) //全局jquery    let Uploader = require(‘./../uploader/webuploader’) //调用想要js export default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加i">
+<meta name="twitter:description" content="可能原因：1，不支持严格模式2，其他原因 解决办法：1，12345window.jQuery = require(&apos;jquery&apos;) //全局jquerylet Uploader = require(&apos;./../uploader/webuploader&apos;) //调用想要jsexport default Uploader //暴露接口 2， 忽略该js的编译 在.babelrc文件里面添加ignor">
 
 
 
@@ -340,11 +340,9 @@
 
       
         <p>可能原因：<br>1，不支持严格模式<br>2，其他原因</p>
-<p>解决办法：<br>1，<br>    window.jQuery = require(‘jquery’) //全局jquery<br>    let Uploader = require(‘./../uploader/webuploader’) //调用想要js</p>
-<pre><code>export default Uploader //暴露接口
-</code></pre><p>2， 忽略该js的编译</p>
-<p>在.babelrc文件里面添加ignore</p>
-<p>{<br>    “presets”: [<br>        [<br>            “env”,<br>            {<br>                “modules”: false<br>            }<br>        ],<br>        “stage-3”<br>    ],<br>    “plugins”: [<br>        “transform-runtime”<br>    ],<br>    “comments”: false,<br>    “env”: {<br>        “test”: {<br>            “presets”: [<br>                “env”,<br>                “stage-3”<br>            ],<br>            “plugins”: [<br>                “istanbul”<br>            ]<br>        }<br>    },<br>    “ignore”: [<br>        “./src/plugins/uploader/webuploader.js” //编译时忽略该文件<br>    ]<br>}</p>
+<p>解决办法：<br>1，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">require</span>(<span class="string">'jquery'</span>) <span class="comment">//全局jquery</span></div><div class="line"><span class="keyword">let</span> Uploader = <span class="built_in">require</span>(<span class="string">'./../uploader/webuploader'</span>) <span class="comment">//调用想要js</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> Uploader <span class="comment">//暴露接口</span></div></pre></td></tr></table></figure></p>
+<p>2， 忽略该js的编译</p>
+<p>在.babelrc文件里面添加ignore<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">	<span class="string">"presets"</span>: [</div><div class="line">		[</div><div class="line">			<span class="string">"env"</span>,</div><div class="line">			&#123;</div><div class="line">				<span class="string">"modules"</span>: <span class="literal">false</span></div><div class="line">			&#125;</div><div class="line">		],</div><div class="line">		<span class="string">"stage-3"</span></div><div class="line">	],</div><div class="line">	<span class="string">"plugins"</span>: [</div><div class="line">		<span class="string">"transform-runtime"</span></div><div class="line">	],</div><div class="line">	<span class="string">"comments"</span>: <span class="literal">false</span>,</div><div class="line">	<span class="string">"env"</span>: &#123;</div><div class="line">		<span class="string">"test"</span>: &#123;</div><div class="line">			<span class="string">"presets"</span>: [</div><div class="line">				<span class="string">"env"</span>,</div><div class="line">				<span class="string">"stage-3"</span></div><div class="line">			],</div><div class="line">			<span class="string">"plugins"</span>: [</div><div class="line">				<span class="string">"istanbul"</span></div><div class="line">			]</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="string">"ignore"</span>: [</div><div class="line">		<span class="string">"./src/plugins/uploader/webuploader.js"</span> <span class="comment">//编译时忽略该文件</span></div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>

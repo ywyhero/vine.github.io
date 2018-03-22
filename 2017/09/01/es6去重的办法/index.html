@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一： let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) {1,2,3,5}let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二： let s = new Set();s.add(1);">
+<meta name="description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6去重的办法">
 <meta property="og:url" content="http://ywyhero.github.io/2017/09/01/es6去重的办法/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一： let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) {1,2,3,5}let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二： let s = new Set();s.add(1);">
-<meta property="og:updated_time" content="2017-09-01T08:33:46.000Z">
+<meta property="og:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
+<meta property="og:updated_time" content="2018-03-22T03:53:36.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6去重的办法">
-<meta name="twitter:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一： let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) {1,2,3,5}let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二： let s = new Set();s.add(1);">
+<meta name="twitter:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
 
 
 
@@ -340,10 +340,8 @@
 
       
         <p>在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下：</p>
-<p>方法一：</p>
-<p>let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) {1,2,3,5}<br>let arry = Array.from(items) //返回的数据是[1,2,3,5]</p>
-<p>方法二：</p>
-<p>let s = new Set();<br>s.add(1);<br>s.add(2);<br>s.add(2);<br>//返回数据是Set(2) {1, 2}<br>let arry = Array.from(s)</p>
+<p>方法一：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]) <span class="comment">//返回的数据是 Set(4) &#123;1,2,3,5&#125;</span></div><div class="line"><span class="keyword">let</span> arry = <span class="built_in">Array</span>.from(items) <span class="comment">//返回的数据是[1,2,3,5]</span></div></pre></td></tr></table></figure></p>
+<p>方法二：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line">s.add(<span class="number">1</span>);</div><div class="line">s.add(<span class="number">2</span>);</div><div class="line">s.add(<span class="number">2</span>);</div><div class="line"><span class="comment">//返回数据是Set(2) &#123;1, 2&#125;</span></div><div class="line"><span class="keyword">let</span> arry = <span class="built_in">Array</span>.from(s)</div></pre></td></tr></table></figure></p>
 
       
     </div>

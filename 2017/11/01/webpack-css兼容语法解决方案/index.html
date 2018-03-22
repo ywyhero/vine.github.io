@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。 var autoprefixer = require(‘autoprefixer’); module.exports = {  module: {    loaders: [        {            test:   /.">
+<meta name="description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。12345678910111213var autoprefixer = require(&apos;autoprefixer&apos;);module.exports = &amp;#123;  module: &amp;#123;    loaders: [">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack css兼容语法解决方案">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/01/webpack-css兼容语法解决方案/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。 var autoprefixer = require(‘autoprefixer’); module.exports = {  module: {    loaders: [        {            test:   /.">
-<meta property="og:updated_time" content="2017-11-01T08:43:21.000Z">
+<meta property="og:description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。12345678910111213var autoprefixer = require(&apos;autoprefixer&apos;);module.exports = &amp;#123;  module: &amp;#123;    loaders: [">
+<meta property="og:updated_time" content="2018-03-22T03:56:31.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack css兼容语法解决方案">
-<meta name="twitter:description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。 var autoprefixer = require(‘autoprefixer’); module.exports = {  module: {    loaders: [        {            test:   /.">
+<meta name="twitter:description" content="问题：开发完成后在低版本的浏览器中会遇到不兼容的问题 解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。12345678910111213var autoprefixer = require(&apos;autoprefixer&apos;);module.exports = &amp;#123;  module: &amp;#123;    loaders: [">
 
 
 
@@ -340,10 +340,8 @@
 
       
         <p>问题：开发完成后在低版本的浏览器中会遇到不兼容的问题</p>
-<p>解决方法：<br>在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。</p>
-<p>var autoprefixer = require(‘autoprefixer’);</p>
-<p>module.exports = {<br>  module: {<br>    loaders: [<br>        {<br>            test:   /.css$/,<br>            loader: “style-loader!css-loader!postcss-loader”<br>        }<br>    ]<br>  },<br>  postcss: [ autoprefixer({ browsers: [‘last 2 versions’] }) ]<br>}</p>
-<p>在vue-cli中的解决方案：<br>在.postcssrc.js中配置<br>module.exports = {<br>    “plugins”: {<br>        // to edit target browsers: use “browserslist” field in package.json<br>        “autoprefixer”: {<br>            “browers”: [‘ie &gt; 6’, ‘last 10 versions’]<br>        }<br>    }<br>}</p>
+<p>解决方法：<br>在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> autoprefixer = <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="attr">test</span>:   <span class="regexp">/\.css$/</span>,</div><div class="line">            <span class="attr">loader</span>: <span class="string">"style-loader!css-loader!postcss-loader"</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">postcss</span>: [ autoprefixer(&#123; <span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>] &#125;) ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在vue-cli中的解决方案：<br>在.postcssrc.js中配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="string">"plugins"</span>: &#123;</div><div class="line">        <span class="comment">// to edit target browsers: use "browserslist" field in package.json</span></div><div class="line">        <span class="string">"autoprefixer"</span>: &#123;</div><div class="line">            <span class="string">"browers"</span>: [<span class="string">'ie &gt; 6'</span>, <span class="string">'last 10 versions'</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>

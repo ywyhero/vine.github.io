@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
+<meta name="description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：1234567891011121314151617181920212223242526272829303132333435363738">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序保存图片">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/15/微信小程序保存图片/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
-<meta property="og:updated_time" content="2017-11-15T03:51:26.000Z">
+<meta property="og:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：1234567891011121314151617181920212223242526272829303132333435363738">
+<meta property="og:updated_time" content="2018-03-22T03:52:53.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序保存图片">
-<meta name="twitter:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：   `wx.request({    url: ‘xxxxxx’,    data: {        html: html    }">
+<meta name="twitter:description" content="问题: 微信小程序开发的时候保存图片只使用saveImageToPhotosAlbum没有效果。 解决方法：  1.先用wx.downloadFile 会先生成临时的图片url地址 2.再用wx.saveImageToPhotosAlbum保存图片就可以了 案例：1234567891011121314151617181920212223242526272829303132333435363738">
 
 
 
@@ -343,35 +343,7 @@
 <p>解决方法： </p>
 <p>1.先用wx.downloadFile 会先生成临时的图片url地址</p>
 <p>2.再用wx.saveImageToPhotosAlbum保存图片就可以了</p>
-<p>案例： </p>
-<p> `wx.request({<br>    url: ‘xxxxxx’,<br>    data: {<br>        html: html<br>    },<br>    method: ‘POST’,<br>    success: function(res) {<br>        wx.downloadFile({                                        //先用downloFile下载图片到本地<br>            url: app.globalData.settings.host + res.data.result, //通过后台获取到的图片地址<br>            success: function(data) {</p>
-<pre><code>            wx.saveImageToPhotosAlbum({                      //保存图片到本地相册     
-                filePath: data.tempFilePath,                 //filepath为生成的临时的地址
-                success: function(res) {
-                    wx.showToast({
-                        title: &apos;保存成功&apos;,
-                        icon: &apos;success&apos;,
-                        duration: 3000,
-                        mask: true
-                    })
-                },
-                fail: function(res) {
-                    wx.showToast({
-                        title: &apos;保存失败&apos;,
-                        icon: &apos;success&apos;,
-                        duration: 3000,
-                        mask: true
-                    })
-                },
-                complete: function(res) {
-                    console.log(res)
-                }
-            })
-        }
-    })
-
-}
-</code></pre><p>})`</p>
+<p>案例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"> wx.request(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'xxxxxx'</span>,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">html</span>: html</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">        wx.downloadFile(&#123;                                        <span class="comment">//先用downloFile下载图片到本地</span></div><div class="line">            url: app.globalData.settings.host + res.data.result, <span class="comment">//通过后台获取到的图片地址</span></div><div class="line">            success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line"></div><div class="line">                wx.saveImageToPhotosAlbum(&#123;                      <span class="comment">//保存图片到本地相册     </span></div><div class="line">                    filePath: data.tempFilePath,                 <span class="comment">//filepath为生成的临时的地址</span></div><div class="line">                    success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">                        wx.showToast(&#123;</div><div class="line">                            <span class="attr">title</span>: <span class="string">'保存成功'</span>,</div><div class="line">                            <span class="attr">icon</span>: <span class="string">'success'</span>,</div><div class="line">                            <span class="attr">duration</span>: <span class="number">3000</span>,</div><div class="line">                            <span class="attr">mask</span>: <span class="literal">true</span></div><div class="line">                        &#125;)</div><div class="line">                    &#125;,</div><div class="line">                    <span class="attr">fail</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">                        wx.showToast(&#123;</div><div class="line">                            <span class="attr">title</span>: <span class="string">'保存失败'</span>,</div><div class="line">                            <span class="attr">icon</span>: <span class="string">'success'</span>,</div><div class="line">                            <span class="attr">duration</span>: <span class="number">3000</span>,</div><div class="line">                            <span class="attr">mask</span>: <span class="literal">true</span></div><div class="line">                        &#125;)</div><div class="line">                    &#125;,</div><div class="line">                    <span class="attr">complete</span>: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">                        <span class="built_in">console</span>.log(res)</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>

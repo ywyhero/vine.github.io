@@ -348,8 +348,7 @@
 解决方法： 
 1.先用wx.downloadFile 会先生成临时的图片url地址
 2.再用wx.saveImageToPhotosAlbum保存图片就可以了
-案例： 
- `wx.request({  
+案例：123456789101112131
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -490,9 +489,7 @@
         
           
           问题：开发完成后在低版本的浏览器中会遇到不兼容的问题
-解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。
-var autoprefixer = require(‘autoprefixer’);
-module.exports = {  modu
+解决方法：在webpack中，你可以安装npm包postcss-loader来启用Autoprefixer。12345678910111213var autoprefixer = require('autoprefixer');module.ex
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -635,7 +632,7 @@ module.exports = {  modu
           问题： vue在ie中报错，promise polyfill
 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)
 
-entry: {app: “./src/main.js”
+1234567entry: &#123;    app:
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -775,11 +772,7 @@ entry: {app: “./src/main.js”
       
         
           
-          问题：webUploader在上传后再接连上传会报错解决方案：在webUploader上传完成后执行一下重置就可以。
-async readLocalFile(){
-    if (this.uploader) {
-        this.uploader.destroy()
-        thi
+          问题：webUploader在上传后再接连上传会报错解决方案：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859在webUpload
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -919,7 +912,7 @@ async readLocalFile(){
       
         
           
-          在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。let obj = document.getElementById(id) ;if(obj
+          在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。1234let obj = document.getElementById(id) ;if
           ...
           <!--noindex-->
           <div class="post-button text-center">

@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：//链接let host = window.location.protocol + ‘//‘ + window.location.host;//图片链接let imgurl = host + ‘/bonus/static/img/share_logo.png’;//编码url链接let lin">
+<meta name="description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：1234567891011121314151617181920212223242526272829303132//链接let host = window.location.protocol + &apos;//&apos; + window.location.host;//图片链接let imgurl = hos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信二次分享图片不显示问题">
 <meta property="og:url" content="http://ywyhero.github.io/2017/12/25/微信二次分享图片不显示问题/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：//链接let host = window.location.protocol + ‘//‘ + window.location.host;//图片链接let imgurl = host + ‘/bonus/static/img/share_logo.png’;//编码url链接let lin">
-<meta property="og:updated_time" content="2017-12-25T10:32:21.000Z">
+<meta property="og:description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：1234567891011121314151617181920212223242526272829303132//链接let host = window.location.protocol + &apos;//&apos; + window.location.host;//图片链接let imgurl = hos">
+<meta property="og:updated_time" content="2018-03-22T03:53:48.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信二次分享图片不显示问题">
-<meta name="twitter:description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：//链接let host = window.location.protocol + ‘//‘ + window.location.host;//图片链接let imgurl = host + ‘/bonus/static/img/share_logo.png’;//编码url链接let lin">
+<meta name="twitter:description" content="问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时) 解决：1234567891011121314151617181920212223242526272829303132//链接let host = window.location.protocol + &apos;//&apos; + window.location.host;//图片链接let imgurl = hos">
 
 
 
@@ -340,22 +340,7 @@
 
       
         <p>问题原因： 由于分享后微信在分享的链接后面添加了？from。。。。等一些东西；(图片为本地图片时)</p>
-<p>解决：<br>//链接<br>let host = window.location.protocol + ‘//‘ + window.location.host;<br>//图片链接<br>let imgurl = host + ‘/bonus/static/img/share_logo.png’;<br>//编码url链接<br>let link = encodeURIComponent(window.location.href.split(‘#’)[0]);</p>
-<p>axios.get(‘/api/xz/mg/base/wx/signature?url=’ + link).then((res) =&gt; {<br>    //获取相应数据<br>    let ndata = res.data.result<br>    wx.config({<br>        appId: ndata.appId, // 必填，公众号的唯一标识<br>        timestamp: ndata.timestamp, // 必填，生成签名的时间戳<br>        nonceStr: ndata.noncestr, // 必填，生成签名的随机串<br>        signature: ndata.signature,// 必填，签名，见附录1<br>        jsApiList: [“onMenuShareAppMessage”, “onMenuShareTimeline”] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2<br>    })</p>
-<pre><code>wx.ready(function () {
-    wx.onMenuShareAppMessage({
-        title: &apos;发放年终奖，你应该避免雷区&apos;, // 分享标题
-        desc: &apos;一键优化年终奖，企业少花钱，员工多拿钱&apos;, // 分享描述
-        link:  window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl: imgurl // 分享图标
-    });
-    wx.onMenuShareTimeline({
-        title: &apos;发放年终奖，你应该避免雷区&apos;, // 分享标题
-        link:  window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl: imgurl// 分享图标
-    });
-})
-</code></pre><p>})</p>
+<p>解决：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//链接</span></div><div class="line"><span class="keyword">let</span> host = <span class="built_in">window</span>.location.protocol + <span class="string">'//'</span> + <span class="built_in">window</span>.location.host;</div><div class="line"><span class="comment">//图片链接</span></div><div class="line"><span class="keyword">let</span> imgurl = host + <span class="string">'/bonus/static/img/share_logo.png'</span>;</div><div class="line"><span class="comment">//编码url链接</span></div><div class="line"><span class="keyword">let</span> link = <span class="built_in">encodeURIComponent</span>(<span class="built_in">window</span>.location.href.split(<span class="string">'#'</span>)[<span class="number">0</span>]);</div><div class="line"></div><div class="line">axios.get(<span class="string">'/api/xz/mg/base/wx/signature?url='</span> + link).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">//获取相应数据</span></div><div class="line">    <span class="keyword">let</span> ndata = res.data.result</div><div class="line">    wx.config(&#123;</div><div class="line">        <span class="attr">appId</span>: ndata.appId, <span class="comment">// 必填，公众号的唯一标识</span></div><div class="line">        timestamp: ndata.timestamp, <span class="comment">// 必填，生成签名的时间戳</span></div><div class="line">        nonceStr: ndata.noncestr, <span class="comment">// 必填，生成签名的随机串</span></div><div class="line">        signature: ndata.signature,<span class="comment">// 必填，签名，见附录1</span></div><div class="line">        jsApiList: [<span class="string">"onMenuShareAppMessage"</span>, <span class="string">"onMenuShareTimeline"</span>] <span class="comment">// 必填，需要使用的JS接口列表，所有JS接口列表见附录2</span></div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    wx.ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        wx.onMenuShareAppMessage(&#123;</div><div class="line">            <span class="attr">title</span>: <span class="string">'发放年终奖，你应该避免雷区'</span>, <span class="comment">// 分享标题</span></div><div class="line">            desc: <span class="string">'一键优化年终奖，企业少花钱，员工多拿钱'</span>, <span class="comment">// 分享描述</span></div><div class="line">            link:  <span class="built_in">window</span>.location.href, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></div><div class="line">            imgUrl: imgurl <span class="comment">// 分享图标</span></div><div class="line">        &#125;);</div><div class="line">        wx.onMenuShareTimeline(&#123;</div><div class="line">            <span class="attr">title</span>: <span class="string">'发放年终奖，你应该避免雷区'</span>, <span class="comment">// 分享标题</span></div><div class="line">            link:  <span class="built_in">window</span>.location.href, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></div><div class="line">            imgUrl: imgurl<span class="comment">// 分享图标</span></div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>

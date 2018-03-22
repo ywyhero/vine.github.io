@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  entry: {app: “./src/main.js”},修改为entry: {app: [“babel-polyfill”, “./src/main.j">
+<meta name="description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  1234567entry: &amp;#123;    app: &quot;./src/main.js&quot;&amp;#125;,修改为entry: &amp;#123;    app: [&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue在ie中报错promise polyfill的解决方案">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/01/vue在ie中报错promise-profill的解决方案/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  entry: {app: “./src/main.js”},修改为entry: {app: [“babel-polyfill”, “./src/main.j">
-<meta property="og:updated_time" content="2017-11-01T08:28:43.000Z">
+<meta property="og:description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  1234567entry: &amp;#123;    app: &quot;./src/main.js&quot;&amp;#125;,修改为entry: &amp;#123;    app: [&quot;">
+<meta property="og:updated_time" content="2018-03-22T03:56:04.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue在ie中报错promise polyfill的解决方案">
-<meta name="twitter:description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  entry: {app: “./src/main.js”},修改为entry: {app: [“babel-polyfill”, “./src/main.j">
+<meta name="twitter:description" content="问题： vue在ie中报错，promise polyfill 解决方法：1.npm install babel-polyfill –save2.在webpack.base.conf.js中 require(‘babel-polyfill’)  1234567entry: &amp;#123;    app: &quot;./src/main.js&quot;&amp;#125;,修改为entry: &amp;#123;    app: [&quot;">
 
 
 
@@ -342,7 +342,7 @@
         <p>问题： vue在ie中报错，promise polyfill</p>
 <p>解决方法：<br>1.npm install babel-polyfill –save<br>2.在webpack.base.conf.js中 require(‘babel-polyfill’)</p>
 <ol>
-<li>entry: {<br>app: “./src/main.js”<br>},<br>修改为<br>entry: {<br>app: [“babel-polyfill”, “./src/main.js”]<br>},</li>
+<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">entry: &#123;</div><div class="line">    <span class="attr">app</span>: <span class="string">"./src/main.js"</span></div><div class="line">&#125;,</div><div class="line">修改为</div><div class="line">entry: &#123;</div><div class="line">    <span class="attr">app</span>: [<span class="string">"babel-polyfill"</span>, <span class="string">"./src/main.js"</span>]</div><div class="line">&#125;,</div></pre></td></tr></table></figure></li>
 </ol>
 
       

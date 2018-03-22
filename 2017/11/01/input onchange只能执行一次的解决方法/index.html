@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=o">
+<meta name="description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。1234let obj = document.getElementById(id) ;if(obj.outerHTML)&amp;#123;  //IE重置表单不能清空file值    obj.ou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="input onchange只能执行一次的解决方法">
 <meta property="og:url" content="http://ywyhero.github.io/2017/11/01/input onchange只能执行一次的解决方法/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=o">
-<meta property="og:updated_time" content="2017-11-15T03:50:14.000Z">
+<meta property="og:description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。1234let obj = document.getElementById(id) ;if(obj.outerHTML)&amp;#123;  //IE重置表单不能清空file值    obj.ou">
+<meta property="og:updated_time" content="2018-03-22T03:54:12.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="input onchange只能执行一次的解决方法">
-<meta name="twitter:description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。let obj = document.getElementById(id) ;if(obj.outerHTML){  //IE重置表单不能清空file值    obj.outerHTML=o">
+<meta name="twitter:description" content="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。兼容ie10的写法：//网上写法。。实际操作并没生效。1234let obj = document.getElementById(id) ;if(obj.outerHTML)&amp;#123;  //IE重置表单不能清空file值    obj.ou">
 
 
 
@@ -339,9 +339,8 @@
       
 
       
-        <h2 id="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e-traget-value-‘’。"><a href="#在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e-traget-value-‘’。" class="headerlink" title="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。"></a>在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。</h2><p>兼容ie10的写法：//网上写法。。实际操作并没生效。<br>let obj = document.getElementById(id) ;<br>if(obj.outerHTML){  //IE重置表单不能清空file值<br>    obj.outerHTML=obj.outerHTML;<br>}<br>兼容ie10的写法：<br><code>&lt;form&gt;
-    &lt;input type=&quot;file&quot;&gt;
-&lt;/form&gt;</code><br>form.reset() //实际操作生效。</p>
+        <h2 id="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e-traget-value-‘’。"><a href="#在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e-traget-value-‘’。" class="headerlink" title="在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。"></a>在上传文件的时候会遇到上传错误文件后再调用的不执行的问题，网上有很多解决方法，不过最简单的应该是在上传失败后执行一下e.traget.value = ‘’。</h2><p>兼容ie10的写法：//网上写法。。实际操作并没生效。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = <span class="built_in">document</span>.getElementById(id) ;</div><div class="line"><span class="keyword">if</span>(obj.outerHTML)&#123;  <span class="comment">//IE重置表单不能清空file值</span></div><div class="line">    obj.outerHTML=obj.outerHTML; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>兼容ie10的写法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form&gt;</div><div class="line">    &lt;input type="file"&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">form.reset() <span class="comment">//实际操作生效。</span></div></pre></td></tr></table></figure></p>
 <h2 id="这样就可以完美的解决了这个问题。"><a href="#这样就可以完美的解决了这个问题。" class="headerlink" title="这样就可以完美的解决了这个问题。"></a>这样就可以完美的解决了这个问题。</h2>
       
     </div>

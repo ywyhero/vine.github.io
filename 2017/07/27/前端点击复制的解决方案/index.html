@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://ywyhero.github.io/2017/07/27/前端点击复制的解决方案/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
 <meta property="og:description" content="某天突然来了一个点击复制到剪切板的需求，之前没有做过这类的，于是在网上找了一大推解决方案。  用js原生写的（浏览器兼容是很大的问题） 复制框架（ZeroClipboard,jquery.zclip,clipboard等）  由于兼容问题js原生的就不考虑了，框架中，jquery.zclip需要引进jquery，所以也不再考虑范围之内了。  ZeroClipboard，clipboard两个框架都">
-<meta property="og:updated_time" content="2017-09-01T08:28:37.000Z">
+<meta property="og:updated_time" content="2018-03-22T03:49:24.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端点击复制的解决方案">
 <meta name="twitter:description" content="某天突然来了一个点击复制到剪切板的需求，之前没有做过这类的，于是在网上找了一大推解决方案。  用js原生写的（浏览器兼容是很大的问题） 复制框架（ZeroClipboard,jquery.zclip,clipboard等）  由于兼容问题js原生的就不考虑了，框架中，jquery.zclip需要引进jquery，所以也不再考虑范围之内了。  ZeroClipboard，clipboard两个框架都">
@@ -351,16 +351,10 @@
 <li><p>npm install clipboard</p>
 </li>
 <li><p>点击按钮必须需要 data-clipboard-target=“”和 data-clipboard-action=”” 自定义属性 如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn"</span> data-clipboard-action=<span class="string">"copy"</span> data-clipboard-target=<span class="string">"#bar"</span>&gt;</div><div class="line">    Cut to clipboard</div><div class="line">&lt;<span class="regexp">/button&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><code>&lt;button class=&quot;btn&quot; data-clipboard-action=&quot;copy&quot; data-clipboard-target=&quot;#bar&quot;&gt;
-    Cut to clipboard
-&lt;/button&gt;</code></p>
-<p>复制成功和失败后的操作：</p>
-<p>clipboard.on(‘success’, function(e) {<br>    console.info(‘Action:’, e.action);<br>    console.info(‘Text:’, e.text);<br>    console.info(‘Trigger:’, e.trigger);</p>
-<pre><code>e.clearSelection();
-</code></pre><p>});</p>
-<p>clipboard.on(‘error’, function(e) {<br>    console.error(‘Action:’, e.action);<br>    console.error(‘Trigger:’, e.trigger);<br>});</p>
+<p>复制成功和失败后的操作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">clipboard.on(<span class="string">'success'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">'Action:'</span>, e.action);</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">'Text:'</span>, e.text);</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">'Trigger:'</span>, e.trigger);</div><div class="line"> </div><div class="line">    e.clearSelection();</div><div class="line">&#125;);</div><div class="line"> </div><div class="line">clipboard.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">'Action:'</span>, e.action);</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">'Trigger:'</span>, e.trigger);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 
       
     </div>
