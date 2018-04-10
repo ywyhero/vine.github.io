@@ -90,16 +90,15 @@
 
 
 
-<meta name="description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
-<meta property="og:type" content="article">
-<meta property="og:title" content="es6去重的办法">
-<meta property="og:url" content="http://ywyhero.github.io/2017/09/01/es6去重的办法/index.html">
+<meta name="description" content="在你迷茫无措的时候，认真学习绝不会是一个错的选择。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vine的个人微博">
+<meta property="og:url" content="http://ywyhero.github.io/page/5/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
-<meta property="og:updated_time" content="2018-03-22T03:53:36.377Z">
+<meta property="og:description" content="在你迷茫无措的时候，认真学习绝不会是一个错的选择。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="es6去重的办法">
-<meta name="twitter:description" content="在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下： 方法一：12let items = new Set([1,2,3,3,2,5]) //返回的数据是 Set(4) &amp;#123;1,2,3,5&amp;#125;let arry = Array.from(items) //返回的数据是[1,2,3,5] 方法二：123456let s = new">
+<meta name="twitter:title" content="Vine的个人微博">
+<meta name="twitter:description" content="在你迷茫无措的时候，认真学习绝不会是一个错的选择。">
 
 
 
@@ -127,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://ywyhero.github.io/2017/09/01/es6去重的办法/"/>
+  <link rel="canonical" href="http://ywyhero.github.io/page/5/"/>
 
 
 
 
 
-  <title>es6去重的办法 | Vine的个人微博</title>
+  <title>Vine的个人微博</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +158,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +243,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -253,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/09/01/es6去重的办法/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2017/05/08/hexo换肤/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -270,7 +271,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">es6去重的办法</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/08/hexo换肤/" itemprop="url">hexo换肤</a></h1>
         
 
         <div class="post-meta">
@@ -282,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-01T16:25:12+08:00">
-                2017-09-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-08T15:17:34+08:00">
+                2017-05-08
               </time>
             
 
@@ -339,31 +342,37 @@
       
 
       
-        <p>在学习node的时候，有个需求是将数据从数据中获取并去重，得到同事的帮助得知es6的set方便，在此记录一下：</p>
-<p>方法一：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>]) <span class="comment">//返回的数据是 Set(4) &#123;1,2,3,5&#125;</span></div><div class="line"><span class="keyword">let</span> arry = <span class="built_in">Array</span>.from(items) <span class="comment">//返回的数据是[1,2,3,5]</span></div></pre></td></tr></table></figure></p>
-<p>方法二：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line">s.add(<span class="number">1</span>);</div><div class="line">s.add(<span class="number">2</span>);</div><div class="line">s.add(<span class="number">2</span>);</div><div class="line"><span class="comment">//返回数据是Set(2) &#123;1, 2&#125;</span></div><div class="line"><span class="keyword">let</span> arry = <span class="built_in">Array</span>.from(s)</div></pre></td></tr></table></figure></p>
+        
+          
+          更换为hexo主题
+进入hexo文件夹
+cd your-hexo-site
 
+克隆next代码并存放到 themes/next 目录下
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+
+在站点 _config.yml 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/08/hexo换肤/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -371,42 +380,25 @@
       
 
       
-        
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/07/27/前端点击复制的解决方案/" rel="next" title="前端点击复制的解决方案">
-                <i class="fa fa-chevron-left"></i> 前端点击复制的解决方案
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/01/input onchange只能执行一次的解决方法/" rel="prev" title="input onchange只能执行一次的解决方法">
-                input onchange只能执行一次的解决方法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
@@ -414,10 +406,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -613,10 +601,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-
 
   
 
