@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="工作问题," />
+  <meta name="keywords" content="学习日志," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="在实际项目中小程序onlunch调用接口登陆异步获取数据时onlunch异步还没执行完，首页就会现行执行onshow，这样会导致用户进入页面展示的页面获取不到相应的信息。   解决方法  12345671. 使用getCurrentPages()//写在异步success中 当先调用页面的时候getCurrentPages()的length就不会为空，再重新执行下onload事件就会得到想要的数">
-<meta name="keywords" content="工作问题">
+<meta name="description" content="1234567891011121314151617181920212223242526272829//将多层数组转换成一层数组const nestedArr = [1, 2, [3, 4, [5, 6]]];const flatten = arr =&amp;gt;  arr.reduce(    (flat, next) =&amp;gt; flat.concat(Array.isArray(next) ? f">
+<meta name="keywords" content="学习日志">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序onlunch异步时首页获取不到相应数据">
-<meta property="og:url" content="http://ywyhero.github.io/2018/05/04/小程序onlunch异步时首页获取不到相应数据/index.html">
+<meta property="og:title" content="reduce的使用">
+<meta property="og:url" content="http://ywyhero.github.io/2018/07/30/reduce的使用/index.html">
 <meta property="og:site_name" content="Vine的个人微博">
-<meta property="og:description" content="在实际项目中小程序onlunch调用接口登陆异步获取数据时onlunch异步还没执行完，首页就会现行执行onshow，这样会导致用户进入页面展示的页面获取不到相应的信息。   解决方法  12345671. 使用getCurrentPages()//写在异步success中 当先调用页面的时候getCurrentPages()的length就不会为空，再重新执行下onload事件就会得到想要的数">
-<meta property="og:updated_time" content="2018-05-04T06:21:05.000Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829//将多层数组转换成一层数组const nestedArr = [1, 2, [3, 4, [5, 6]]];const flatten = arr =&amp;gt;  arr.reduce(    (flat, next) =&amp;gt; flat.concat(Array.isArray(next) ? f">
+<meta property="og:updated_time" content="2018-07-30T03:24:32.121Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序onlunch异步时首页获取不到相应数据">
-<meta name="twitter:description" content="在实际项目中小程序onlunch调用接口登陆异步获取数据时onlunch异步还没执行完，首页就会现行执行onshow，这样会导致用户进入页面展示的页面获取不到相应的信息。   解决方法  12345671. 使用getCurrentPages()//写在异步success中 当先调用页面的时候getCurrentPages()的length就不会为空，再重新执行下onload事件就会得到想要的数">
+<meta name="twitter:title" content="reduce的使用">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829//将多层数组转换成一层数组const nestedArr = [1, 2, [3, 4, [5, 6]]];const flatten = arr =&amp;gt;  arr.reduce(    (flat, next) =&amp;gt; flat.concat(Array.isArray(next) ? f">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://ywyhero.github.io/2018/05/04/小程序onlunch异步时首页获取不到相应数据/"/>
+  <link rel="canonical" href="http://ywyhero.github.io/2018/07/30/reduce的使用/"/>
 
 
 
 
 
-  <title>小程序onlunch异步时首页获取不到相应数据 | Vine的个人微博</title>
+  <title>reduce的使用 | Vine的个人微博</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +254,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2018/05/04/小程序onlunch异步时首页获取不到相应数据/">
+    <link itemprop="mainEntityOfPage" href="http://ywyhero.github.io/2018/07/30/reduce的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Vine Yao">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">小程序onlunch异步时首页获取不到相应数据</h1>
+          <h1 class="post-title" itemprop="name headline">reduce的使用</h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T13:55:31+08:00">
-                2018-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T11:14:50+08:00">
+                2018-07-30
               </time>
             
 
@@ -318,13 +318,8 @@
       
 
       
-        <ul>
-<li>在实际项目中小程序onlunch调用接口登陆异步获取数据时onlunch异步还没执行完，首页就会现行执行onshow，这样会导致用户进入页面展示的页面获取不到相应的信息。</li>
-</ul>
-<ul>
-<li>解决方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 使用getCurrentPages()</div><div class="line"><span class="comment">//写在异步success中 当先调用页面的时候getCurrentPages()的length就不会为空，再重新执行下onload事件就会得到想要的数据</span></div><div class="line"><span class="keyword">if</span> (getCurrentPages().length != <span class="number">0</span>) &#123;</div><div class="line">    getCurrentPages()[getCurrentPages().length - <span class="number">1</span>].onLoad()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">2.</span> 写一个过度页，将所有的请求都放在过度页中，请求成功后跳转到首页</div></pre></td></tr></table></figure>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将多层数组转换成一层数组</span></div><div class="line"><span class="keyword">const</span> nestedArr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</div><div class="line"><span class="keyword">const</span> flatten = <span class="function"><span class="params">arr</span> =&gt;</span></div><div class="line">  arr.reduce(</div><div class="line">    <span class="function">(<span class="params">flat, next</span>) =&gt;</span> flat.concat(<span class="built_in">Array</span>.isArray(next) ? flatten(next) : next),</div><div class="line">    []</div><div class="line">  );</div><div class="line">flatten(nestedArr) <span class="comment">// [1,2,3,4,5,6]</span></div><div class="line"></div><div class="line"><span class="comment">//将用户中的男性和女性分别放到不同的数组里：</span></div><div class="line"><span class="keyword">const</span> users = [</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">"Adam"</span>, <span class="attr">age</span>: <span class="number">30</span>, <span class="attr">sex</span>: <span class="string">"male"</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">"Helen"</span>, <span class="attr">age</span>: <span class="number">27</span>, <span class="attr">sex</span>: <span class="string">"female"</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">"Amy"</span>, <span class="attr">age</span>: <span class="number">25</span>, <span class="attr">sex</span>: <span class="string">"female"</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">"Anthony"</span>, <span class="attr">age</span>: <span class="number">23</span>, <span class="attr">sex</span>: <span class="string">"male"</span> &#125;,</div><div class="line">];</div><div class="line"></div><div class="line"><span class="keyword">const</span> partition = <span class="function">(<span class="params">arr, isValid</span>) =&gt;</span></div><div class="line">  arr.reduce(</div><div class="line">    <span class="function">(<span class="params">[pass, fail], elem</span>) =&gt;</span></div><div class="line">      isValid(elem) ? [[...pass, elem], fail] : [pass, [...fail, elem]],</div><div class="line">    [[], []],</div><div class="line">  );</div><div class="line">  </div><div class="line"><span class="keyword">const</span> isMale = <span class="function"><span class="params">person</span> =&gt;</span> person.sex === <span class="string">"male"</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> [maleUser, femaleUser] = partition(users, isMale);</div><div class="line"><span class="comment">// maleUser: [&#123; name: "Adam", age: 30, sex: "male" &#125;, &#123; name: "Anthony", age: 23, sex: "male" &#125;]</span></div><div class="line"><span class="comment">// femaleUser[&#123; name: "Helen", age: 27, sex: "female" &#125;, &#123; name: "Amy", age: 25, sex: "female" &#125;]</span></div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -353,7 +348,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工作问题/" rel="tag"># 工作问题</a>
+            <a href="/tags/学习日志/" rel="tag"># 学习日志</a>
           
         </div>
       
@@ -366,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/10/小程序按顺序上传图片到七牛云/" rel="next" title="小程序按顺序上传图片到七牛云">
-                <i class="fa fa-chevron-left"></i> 小程序按顺序上传图片到七牛云
+              <a href="/2018/05/21/小程序爬坑记/" rel="next" title="小程序爬坑记">
+                <i class="fa fa-chevron-left"></i> 小程序爬坑记
               </a>
             
           </div>
@@ -375,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/09/优化性的增加dom元素/" rel="prev" title="优化性的增加dom元素">
-                优化性的增加dom元素 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
